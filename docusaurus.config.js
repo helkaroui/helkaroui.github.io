@@ -8,7 +8,7 @@ module.exports = {
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
     organizationName: 'helkaroui', // Usually your GitHub org/user name.
-    projectName: 'Sharek\'s Geek Cookbook', // Usually your repo name.
+    projectName: 'helkaroui.github.io', // Usually your repo name.
     themeConfig: {
         prism: {
             additionalLanguages: ["java", "scala"],

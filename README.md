@@ -1,4 +1,6 @@
 ### Welcome, fellow geek 👋
+[![Build Status](https://travis-ci.com/helkaroui/helkaroui.github.io.svg?branch=master)](https://travis-ci.com/helkaroui/helkaroui.github.io)
+
 
 ## What is this ?
 Sharek's **Geek Cookbook** is a collection of how-to guides for establishing your own self-hosting platform, using open source software.
