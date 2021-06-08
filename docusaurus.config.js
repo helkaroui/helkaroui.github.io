@@ -2,12 +2,12 @@
 module.exports = {
     title: 'Sharek.dev',
     tagline: 'Sharek\'s Geek Cookbook',
-    url: 'https://sharek.dev',
+    url: 'https://helkaroui.github.io',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
-    organizationName: 'Github/helkaroui', // Usually your GitHub org/user name.
+    organizationName: 'helkaroui', // Usually your GitHub org/user name.
     projectName: 'Sharek\'s Geek Cookbook', // Usually your repo name.
     themeConfig: {
         prism: {
