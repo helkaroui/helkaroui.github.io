@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://helkaroui.github.io/blog</id>
+    <title>Sharek.dev Blog</title>
+    <updated>2021-04-07T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://helkaroui.github.io/blog"/>
+    <subtitle>Sharek.dev Blog</subtitle>
+    <icon>https://helkaroui.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Install docker compose on RPI]]></title>
+        <id>Install docker compose on RPI</id>
+        <link href="https://helkaroui.github.io/blog/Install docker compose on RPI"/>
+        <updated>2021-04-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I like to use Docker containers on my Raspberry Pis as they come with a great layer of abstraction and portability.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[What I learned while setting up my Kubernetes Cluster]]></title>
+        <id>What I learned while setting up my Kubernetes Cluster</id>
+        <link href="https://helkaroui.github.io/blog/What I learned while setting up my Kubernetes Cluster"/>
+        <updated>2021-03-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Rex on setting up a Kubernetes Cluster]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>welcome</id>
+        <link href="https://helkaroui.github.io/blog/welcome"/>
+        <updated>2021-03-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to sharek's tech blog 🎉]]></summary>
+    </entry>
+</feed>

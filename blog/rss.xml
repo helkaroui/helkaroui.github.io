@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Sharek.dev Blog</title>
+        <link>https://helkaroui.github.io/blog</link>
+        <description>Sharek.dev Blog</description>
+        <lastBuildDate>Wed, 07 Apr 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Install docker compose on RPI]]></title>
+            <link>https://helkaroui.github.io/blog/Install docker compose on RPI</link>
+            <guid>Install docker compose on RPI</guid>
+            <pubDate>Wed, 07 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[I like to use Docker containers on my Raspberry Pis as they come with a great layer of abstraction and portability.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[What I learned while setting up my Kubernetes Cluster]]></title>
+            <link>https://helkaroui.github.io/blog/What I learned while setting up my Kubernetes Cluster</link>
+            <guid>What I learned while setting up my Kubernetes Cluster</guid>
+            <pubDate>Tue, 30 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Rex on setting up a Kubernetes Cluster]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Welcome]]></title>
+            <link>https://helkaroui.github.io/blog/welcome</link>
+            <guid>welcome</guid>
+            <pubDate>Tue, 30 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Welcome to sharek's tech blog 🎉]]></description>
+        </item>
+    </channel>
+</rss>
