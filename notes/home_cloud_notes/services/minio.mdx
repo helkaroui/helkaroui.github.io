@@ -1,0 +1,40 @@
+---
+title: Minio
+---
+
+Minio is a popular open-source object storage server compatible with the Amazon S3 cloud storage service. Apps that have
+been set up to talk to Amazon S3, can also be set up to talk to Minio, making Minio a viable alternative to S3 if you
+want more control over your object storage server. The service stores unstructured data such as photos, videos, log
+files, backups, and container / VM images, and can even provide a single object storage server that aggregates multiple
+drives spread across multiple servers.
+
+## Step 1 - Installation and configuration of the Minio server
+To install minio, we need to get the latest release with this command :
+wget https://dl.min.io/server/minio/release/linux-amd64/minio
+
+Then, we will make it executable and move it under /usr/bin, to be accessible from the cli:
+chmod +x minio
+sudo mv minio /usr/bin
+
+Now we need to create a directory where to store our object storage data.
+mkdir /data
+
+Finally we will run the server, the admin credentials are passed to minio through env variables :
+export MINIO_ROOT_USER=admin
+export MINIO_ROOT_PASSWORD=password
+minio server /data
+
+The server starts on address http://localhost:9000
+
+## Step 2 - Run minio as a service
+
+
+
+## Step N - Hardening the server's security
+MinIO supports Server-Side Encryption (SSE) of objects, where the MinIO stores objects on disk in an encrypted format.
+Only clients with access to the correct secret key can decrypt and read the object.
+
+MinIO supports two types of SSE encryption:
+* SSE-C: The server uses a secret key provided by the client to perform encryption and decryption. SSE-C requires TLS connectivity between clients and the MinIO server.
+* SSE-S3: The server uses a secret key managed by a Key Management System (KMS) to perform encryption and decryption. SSE-S3 requires using MinIO KES and a supported KMS.
+

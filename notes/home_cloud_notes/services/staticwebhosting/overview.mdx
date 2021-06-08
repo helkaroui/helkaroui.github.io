@@ -1,0 +1,26 @@
+---
+title: Static Web Hosting
+---
+
+There are a lot of static site generators out there and users have a lot of possibilities to automate and continuously
+deploy static sites these days. Solutions like GitHub pages or Netlify are free to use and easy to set up, even a cheap
+webspace could work. If one of these services is sufficient for your use case you could stop reading at this point.
+
+As I wanted to have more control over such a setup and because it might be fun I decided to create our own service.
+Before we look into the setup details, lets talk about some requirements:
+- easy CI workflow
+- deploy multiple static sites easily
+- use git repository name as subdomain
+
+The fist solutions we've put in place was to serve static sites using only Ngnix. Thus the CD workflow was a little
+difficult to put in place : we used Ansible to deploy the static site from Gitlab's CI/CD workflow.
+This design decision has its fallback :
+- We expose an SSH inbound connection publicly.
+- Versioning is not supported in case of rollback.
+
+Minio is object storage compatibile with s3 and it's 100% open source, s3www is opensouce software that can serve pages
+from compatibile s3 storage
+
+Of course, Minio could be removed from the stack but after a few tests, my personal impression was that Minio is a way
+better to handle file sync and uploads instead over SSH/SCP, at least in a CI driven workflow. The whole workflow is
+nearly the same as for GitHub pages.
