@@ -14,5 +14,5 @@ script:
   - cd ~/$TRAVIS_BUILD_NUMBER
   - git config --global user.name "${GH_NAME}"
   - git config --global user.email "${GH_EMAIL}"
-  - git remote set-url origin https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
-  - pwd && ls && git push -f https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io
+  - git remote set-url origin https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
+  - pwd && ls && git push -f https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io

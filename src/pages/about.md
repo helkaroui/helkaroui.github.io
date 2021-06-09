@@ -10,18 +10,21 @@ Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant @DataFab.
 ## Work Experience
 <br/>
 
-### 2021-03 to Present: [BNP Parisbas](https://group.bnpparibas/)
+### [BNP Parisbas](https://group.bnpparibas/)
+*2021-03 to Present*
 * Developing AML pipelines
 * Optimizing Spark Jobs
 
 
-### 2019-06 to 2021-02: [Kering Group](https://www.kering.com)
+### [Kering Group](https://www.kering.com)
+*2019-06 to 2021-02*
 * Designed a marketing attribution engine
 * Developed Data ingestion pipelines (Spark Batch)
 * Developed large scale streaming applications using Spark Streaming APIs
 
 
-### 2019-01 to 2019-03: [Make.org](https://make.org)
+### [Make.org](https://make.org)
+*2019-01 to 2019-03*
 * Developed NLP APIs with Akka Http & Akka Cluster
 * Produced targeted analysis.
 
@@ -30,12 +33,14 @@ Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant @DataFab.
 ## Education
 <br/>
 
-### 2016-2018 - Master degree in Computer Science & Telecommunications
+### Master degree in Computer Science & Telecommunications
+*2016-2018*
 Engineering School : [IMT Atlantique](https://www.imt-atlantique.fr/en) (ex Telecom Bretagne)
 
 > IMT Atlantique is one of the top 10 engineering schools in France, one of the top 400 universities in the world in THE [World University Ranking](https://www.timeshighereducation.com/world-university-rankings/imt-atlantique).
 
-### 2014-2018 - Master degree in Telecommunications
+### Master degree in Telecommunications
+*2014-2018*
 Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 
 > SupCom is an excellent engineering school in Tunisia
@@ -43,8 +48,18 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 <br/><br/><br/>
 
 ## Mastered Skills
-* Mastering Spark, Spark Streaming
-* Scala, SQL, Python
+* Big data Tools & frameworks
+  * Mastering Spark, Spark Streaming
+  * Akka Actors & Akka Streaming
+  * ELK
+  * Kafka for Event Driven Architecture
+* Software Engineering :
+  * Scala, zio for concurrent programming
+  * Python
+  * SQL
+* Automation :
+  * Ansible + Vagrant
+  * Jenkins, GitlabCI
 
 <br/>
 
