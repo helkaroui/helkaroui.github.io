@@ -11,7 +11,8 @@ script:
   - git config --global user.name "${GH_NAME}"
   - git config --global user.email "${GH_EMAIL}"
   - yarn && npm run build
-  - git clone https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io ~/$TRAVIS_BUILD_NUMBER
+  - git clone https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io --branch=master ~/$TRAVIS_BUILD_NUMBER
   - rsync -avu --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
-  - cd ~/$TRAVIS_BUILD_NUMBER && git remote set-url origin https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
-  - cd ~/$TRAVIS_BUILD_NUMBER && pwd && ls && git push -f
+  - cd ~/$TRAVIS_BUILD_NUMBER
+  - git remote set-url origin https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
+  - pwd && ls && git push -f https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io
