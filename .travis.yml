@@ -21,4 +21,4 @@ script:
   - echo "SHOW all configs" && git config --list --show-origin
   - echo "SHOW remote origin" && git remote show origin
   - git add . && git commit -m "[Travis-CI] build number=$TRAVIS_BUILD_NUMBER"
-  - pwd && ls && git push -f
+  - git push --set-upstream origin master && git push -f
