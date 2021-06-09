@@ -17,5 +17,5 @@ script:
   - echo "SHOW all configs" && git config --list --show-origin
   - echo "SHOW remote origin" && git remote show origin
   - git remote set-url origin https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
-  - git add . && git commit "[Travis-CI] build number=$TRAVIS_BUILD_NUMBER"
+  - git add . && git commit -m "[Travis-CI] build number=$TRAVIS_BUILD_NUMBER"
   - pwd && ls && git push -f https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io
