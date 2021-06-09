@@ -12,5 +12,5 @@ script:
   - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
   - yarn && npm run build
   - git clone https://github.com/helkaroui/helkaroui.github.io ~/$TRAVIS_BUILD_NUMBER
-  - rsync -avu --delete build/ ~/$TRAVIS_BUILD_NUMBER/
+  - rsync -avu --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
   - cd ~/$TRAVIS_BUILD_NUMBER && git push -f
