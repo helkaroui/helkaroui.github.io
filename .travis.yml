@@ -14,6 +14,8 @@ script:
   - cd ~/$TRAVIS_BUILD_NUMBER
   - git config --global user.name "${GH_NAME}"
   - git config --global user.email "${GH_EMAIL}"
+  - git config credential.helper "store --file=.git/credentials"
+  - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
   - echo "SHOW all configs" && git config --list --show-origin
   - echo "SHOW remote origin" && git remote show origin
   - git remote set-url origin https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
