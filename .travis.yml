@@ -14,4 +14,4 @@ script:
   - git clone https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io ~/$TRAVIS_BUILD_NUMBER
   - rsync -avu --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
   - cd ~/$TRAVIS_BUILD_NUMBER && git remote set-url origin https://${GH_NAME}:${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
-  - git push -f
+  - cd ~/$TRAVIS_BUILD_NUMBER && pwd && ll && git push -f
