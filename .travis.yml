@@ -10,7 +10,7 @@ script:
   - pwd && ls
   - yarn && npm run build
   - git clone https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io --branch=master ~/$TRAVIS_BUILD_NUMBER
-  - rsync --recursive --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
+  - rsync -vh --recursive --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
   - cd ~/$TRAVIS_BUILD_NUMBER
   - git config --global user.name "${GH_NAME}"
   - git config --global user.email "${GH_EMAIL}"
@@ -19,6 +19,5 @@ script:
   - git remote rm origin
   - git remote add origin https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
   - echo "sharek.dev" > CNAME
-  - git status
-  - git add . && git commit -m "[Travis-CI] build number=$TRAVIS_BUILD_NUMBER"
+  - git add . && git commit -m "[Travis-CI] based on commit=$TRAVIS_COMMIT build number=$TRAVIS_BUILD_NUMBER"
   - git push --set-upstream origin master
