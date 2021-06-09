@@ -7,9 +7,9 @@ branches:
 cache:
   yarn: true
 script:
-  - pwd && ls
   - yarn && npm run build
   - git clone https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io --branch=master ~/$TRAVIS_BUILD_NUMBER
+  - cp README.md ~/$TRAVIS_BUILD_NUMBER/
   - rsync -vh --recursive --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
   - cd ~/$TRAVIS_BUILD_NUMBER
   - git config --global user.name "${GH_NAME}"
