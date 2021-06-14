@@ -3,7 +3,7 @@ title: About
 ---
 
 # About me
-Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant @DataFab.io. 
+Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant at [DataFab.io](https://datafab.io). 
 
 <br/><br/>
 
@@ -74,10 +74,11 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 - Spark Streaming :)
 - Discovering ZIO
 
-### 2021
+### 2021 (WIP)
 - Mastering Spark optimizations
 - Deep dive into functional programming
 - ML development
+- Ansible
 - AWS certification
 
 <br/><br/><br/>
