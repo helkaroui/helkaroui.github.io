@@ -19,8 +19,8 @@ module.exports = {
                     items: [
                         'spark/optimizations/overview',
                         'spark/optimizations/quick_wins',
-                        'spark/optimizations/reducebykey_vs_groupbykey',
-                        'spark/optimizations/groupby_imbalanced_dataset'
+                        'spark/optimizations/reducebykey_vs_groupbykey'
+                        //'spark/optimizations/groupby_imbalanced_dataset'
                     ],
                 },
             ],

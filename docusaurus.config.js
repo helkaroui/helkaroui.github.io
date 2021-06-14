@@ -88,15 +88,15 @@ module.exports = {
             style: 'dark',
             links: [
                 {
-                    title: 'Big Data Cookbook',
+                    title: 'Recent articles',
                     items: [
                         {
-                            label: 'Spark Notes',
-                            to: 'big_data/spark/optimizations/overview/',
+                            label: 'Getting started with Spark',
+                            to: 'big_data/spark/overview/',
                         },
                         {
-                            label: 'Getting started with Kafka',
-                            to: 'big_data/overview/',
+                            label: 'Spark optimization techniques you should know about',
+                            to: 'big_data/spark/optimizations/overview',
                         },
                     ],
                 },
@@ -109,7 +109,7 @@ module.exports = {
                         },
                         {
                             label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus',
+                            href: 'https://github.com/helkaroui',
                         },
                     ],
                 },

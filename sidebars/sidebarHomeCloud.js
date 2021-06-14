@@ -44,9 +44,9 @@ module.exports = {
             label: 'Tutorials',
             collapsed: false,
             items: [
-                'tutorials/01-setup-nginx',
-                'tutorials/02-nginx-security-best-practices',
-                'tutorials/03-docker_cheatsheet'
+                'tutorials/setup-nginx',
+                'tutorials/nginx-security-best-practices',
+                'tutorials/docker_cheatsheet'
             ]
         }
 

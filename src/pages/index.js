@@ -73,7 +73,7 @@ platform, to how to optimize your big data jobs.">
                                 styles.getStarted,
                             )}
                             to={useBaseUrl('big_data/spark/internals/overview/')}>
-                            Dive into my Spark's chef notes 🚀
+                            Dive into Spark's notes 🚀
                         </Link>
                         <br/>
                         <Link
@@ -82,7 +82,7 @@ platform, to how to optimize your big data jobs.">
                                 styles.getStarted,
                             )}
                             to={useBaseUrl('home_cloud/overview/')}>
-                            Explore my home-cloud chef notes 📝
+                            Explore my home-cloud articles 📝
                         </Link>
                     </div>
                 </div>
@@ -112,16 +112,16 @@ platform, to how to optimize your big data jobs.">
 
                         <div className={clsx(styles.section)}>
                             <h2>Who I'am ?</h2>
-                            <p>Hi 👋🏼, my name is <strong>Hamza EL KAROUI</strong>, proud Tunisian 🇹🇳, data engineer and a full time consultant <a href="https://datafab.io" target="_blank">@DataFab.io</a>.</p>
-                            <Link to={useBaseUrl('about/')} target="_blank">More about me ...</Link>
+                            <p>Hi 👋🏼, my name is <strong>Hamza EL KAROUI</strong>, proud Tunisian 🇹🇳, data engineer and a full time consultant at <a href="https://datafab.io" target="_blank">DataFab.io</a>.</p>
+                            <Link to={useBaseUrl('about/')} target="_blank">Know more about me ...</Link>
 
                         </div>
 
                         <div className={clsx(styles.section)}>
-                            <h2>How to reach me ?</h2>
+                            <h2>How to get in touch ?</h2>
                             <p>Tweet me up, I'm 🐦 <a href="https://twitter.com/Stringly_Typed" target="_blank">@Stringly_Typed</a></p>
                             <p>Contact me by mail 📬 <a href="mailto:helkarou@gmail.com" target="_blank">helkarou@gmail.com</a></p>
-                            <p>LinkedIn 📋 <a href="https://linkedin.com/in/hamza-el-karoui" target="_blank">hamza-el-karoui</a> </p>
+                            <p>I'm also present on LinkedIn 📋 <a href="https://linkedin.com/in/hamza-el-karoui" target="_blank">hamza-el-karoui</a> </p>
                         </div>
 
                     </div>
