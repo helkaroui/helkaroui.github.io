@@ -92,7 +92,7 @@ module.exports = {
                     items: [
                         {
                             label: 'Getting started with Spark',
-                            to: 'big_data/spark/overview/',
+                            to: 'big_data/overview',
                         },
                         {
                             label: 'Spark optimization techniques you should know about',
