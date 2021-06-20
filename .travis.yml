@@ -4,8 +4,6 @@ node_js:
 branches:
   only:
     - develop
-cache:
-  yarn: false
 script:
   - npm install && npm run build
   - export GIT_COMMIT_SHORT=$(echo "$TRAVIS_COMMIT" | cut -c1-7)
