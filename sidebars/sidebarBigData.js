@@ -8,6 +8,13 @@ module.exports = {
             items: [
                 {
                     type: 'category',
+                    label: 'How to ?',
+                    items: [
+                        'spark/how_to/setup_standalone_cluster'
+                    ]
+                },
+                {
+                    type: 'category',
                     label: 'Spark internals',
                     items: [
                         'spark/internals/overview'

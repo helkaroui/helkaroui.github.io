@@ -8,6 +8,7 @@ cache:
   yarn: true
 script:
   - yarn && npm run build
+  - export GIT_COMMIT_SHORT=$(echo "$TRAVIS_COMMIT" | cut -c1-7)
   - git clone https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io --branch=master ~/$TRAVIS_BUILD_NUMBER
   - cp README.md build/
   - rsync -vh --recursive --delete --exclude='.git/' build/ ~/$TRAVIS_BUILD_NUMBER/
@@ -19,5 +20,5 @@ script:
   - git remote rm origin
   - git remote add origin https://${GH_TOKEN}@github.com/helkaroui/helkaroui.github.io 
   - echo "sharek.dev" > CNAME
-  - git add . && git commit -m "[Travis-CI] based on commit=$TRAVIS_COMMIT build number=$TRAVIS_BUILD_NUMBER"
+  - git add . && git commit -m "[Travis-CI] based on commit=$GIT_COMMIT_SHORT build number=$TRAVIS_BUILD_NUMBER"
   - git push --set-upstream origin master
