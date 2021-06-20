@@ -1,28 +1,29 @@
 ---
-title: How to setup a spark standalone cluster
+title: Host your own Spark cluster
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-In this article we will go through the steps of deploying a standalone spark cluster on a VM stack. All the below steps are converted into an ansible playbook that you can find in my github repo [ansible-vagrant-stacks](https://github.com/helkaroui/ansible-vagrant-stacks/tree/main/spark).
+In this article we will go through the steps of deploying a standalone [Spark](https://spark.apache.org/) cluster on a bunch of virtual machines. 
+We will also run a simple application to test the setup and review the logs using Spark history server.
+At the end, we will put the setup steps into an ansible playbook to have a full automation. 
+All resources and produced scripts of this article can be retrieved from github repo [ansible-vagrant-stacks](https://github.com/helkaroui/ansible-vagrant-stacks/tree/main/spark).
 
 
-We want to create 3 virtual machines and deploy a standalone spark cluster on them. These VMs should have the following IP addresses:
-- master:   10.11.13.10
-- worker-1: 10.11.13.11
-- worker-2: 10.11.13.12
+## Design
+We want to create 3 virtual machines and deploy a standalone Spark cluster on them. These VMs should have the following IP addresses:
+<div style={{textAlign: 'center'}}><img alt="Spark standalone cluster" src={useBaseUrl('/img/setup_spark_cluster/architecture_diagram.png')} /></div>
 
-For this task, we're gonna use [Vagrant](https://www.vagrantup.com/) to automatically create and start virtual machines. Then Ansible will be used to install the dependencies.
-
+For this task, we're gonna use [Vagrant](https://www.vagrantup.com/) to automatically create and start virtual machines. Then Ansible will be used to install the dependencies automatically.
 
 ## Requirements
-- Install VirtualBox
-- Install Vagrant
-- Install Ansible
+- VirtualBox
+- Vagrant
+- Ansible
 
-### 1. Install VirtualBox
+### 1. Setup VirtualBox
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is a powerful virtualization tool that we will use to create virtual machines. 
-In this article we will install it on a debian-based OS. Thus you need to check out the installation guide if you use a different operating system.
 
+To setup VirtualBox, run the following commands :
 ```shell title=Install VirtualBox on Ubuntu
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
@@ -33,7 +34,7 @@ sudo apt-get update && sudo apt-get install -y virtualbox-6.1
 
 Now you can run VirtualBox from the Ubuntu Launcher or just run `virtualbox` in your command line.
 
-<div style={{textAlign: 'center'}}><img alt="Virtualbox fresh installation" src={useBaseUrl('/img/setup_spark_cluster/virtualbox_install.png')} /></div>
+<div style={{textAlign: 'center'}}><img alt="VirtualBox fresh installation" src={useBaseUrl('/img/setup_spark_cluster/virtualbox_install.png')} /></div>
 
 We also need to download *VM VirtualBox Extension Pack* which is a set of extensions of the Oracle VM VirtualBox base package. The extension pack provides functionalities related to connectivity and remote desktop features.
 To install it, refer to the [download](https://www.virtualbox.org/wiki/Downloads) page or run the following command :
@@ -45,7 +46,7 @@ wget https://download.virtualbox.org/virtualbox/6.1.22/Oracle_VM_VirtualBox_Exte
 In VirtualBox, we need to navigate the menu :  `File -> Preference -> Extensions`, then click on the add button and select the package we just downloaded.
 Once there, the extension will be visible in the window
 
-<div style={{textAlign: 'center'}}><img alt="Virtualbox fresh installation" src={useBaseUrl('/img/setup_spark_cluster/virtualbox_extensions.png')} /></div>
+<div style={{textAlign: 'center'}}><img alt="VirtualBox Extensions" src={useBaseUrl('/img/setup_spark_cluster/virtualbox_extensions.png')} /></div>
 
 ### 2. Install Vagrant
 Vagrant is a simple and powerful automation tool to deal with VMs. It uses a declarative configuration file which describes all your software requirements. To start let's install Vagrant. Go to [Download page](https://www.vagrantup.com/downloads) and choose the right download steps for your OS.
@@ -63,16 +64,17 @@ Once installed, run `vagrant --help` to verify the installation.
 
 ### 3. Install Ansible
 
-## Create some VMs with Vagrant
+## Create VMs with Vagrant
 **Create a Vagrant configuration**
-Now let's create a project directory, inwhich we create a file named `Vagrantfile`.
+
+Now let's create a project directory, in which we create a file named `Vagrantfile`.
 ```shell
 mkdir spark-cluster && cd spark-cluster
 vim Vagrantfile
 ```
 
 So in the first part, we declare the base image we gonna use `ubuntu/xenial64`
-```ruby
+```ruby title=Vagrantfile
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -108,7 +110,7 @@ end
 ```
 
 To start the VMs, just run :
-```
+```shell
 vagrant up
 ```
 
@@ -123,7 +125,7 @@ worker-2                  running (virtualbox)
 ```
 
 Also you can see the VMs on VirtualBox ui :
-<div style={{textAlign: 'center'}}><img alt="spark reducebykey" src={useBaseUrl('/img/setup_spark_cluster/virtualbox.png')} /></div>
+<div style={{textAlign: 'center'}}><img alt="Spark reduceByKey" src={useBaseUrl('/img/setup_spark_cluster/virtualbox.png')} /></div>
 
 Now to ssh into each one on them, just run :
 ```title=vagrant ssh master
@@ -137,34 +139,57 @@ To remove the VMs completely, just run `vagrant destroy`
 
 :::
 
-## Setup Spark Master Node
-**Install Dependencies**
-Spark runs on the JVM, we need to have Java JRE 8 installed (also JDK seems to be a pre-requisite as well). On Debian based OS, this is as simple as running this command :
+## Setup Spark Nodes
+### Install Dependencies
+
+Spark runs on Java 8/11, Scala 2.12. So we need to have Java JRE 8 installed (also JDK seems to be a pre-requisite as well). 
+On Debian based OS (like Ubuntu), this is as simple as running this command :
 
 ```shell
 sudo apt-get install default-jdk
 ```
 
+:::info
+
+**Spark** runs on Java 8/11, Scala 2.12, Python 3.6+ and R 3.5+. 
+
+Java 8 prior to version 8u92 support is deprecated as of Spark 3.0.0. For the Scala API, Spark 3.1.2 uses Scala 2.12. 
+You will need to use a compatible Scala version (2.12.x).
+
+:::
+
+Then check the java version by running :
+```shell
+java -version
+```
+
+The output tells you that Java is located in `/usr/lib/jvm/default-java`.
+
+
 ### Download Spark
-Download latest Spark version when you are going to install. At wrinting time it's **v3.1.2** :
+Download latest Spark version when you are going to install. At writing time it's **v3.1.2** :
 ```
 wget https://mirrors.ircam.fr/pub/apache/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz /tmp/spark/
 ```
 
+Extract the package to `/opt/spark` directory
 ```
 tar xzvf /tmp/spark/spark-3.1.2-bin-hadoop3.2.tgz -c /opt/spark/
 ```
 
-```
+**Spark** uses environment variables to locate it's HOME_DIR and java, so we need to add those variables to `~/.bashrc`
+```shell title="Edit .bashrc file"
 sudo vim ~/.bashrc
 ```
 
-```
-export JAVA_HOME=/usr/lib/jvm/default-java/jre
-export SPARK_HOME=/opt/spark/bin
-export PATH=$PATH:SPARK_HOME
+And add the following entries at the end :
+```shell
+export JAVA_HOME=/usr/lib/jvm/default-java
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 ```
 
+Now source the file to apply those changes to the current session :
 ```
 source ~/.bashrc
 ```
@@ -186,12 +211,12 @@ The most important configuration files you need to know about are :
 Let's configure each one of them :
 
 Edit `spark-defaults.conf` and put the following properties inside :
-```
+```shell
 vim /opt/spark/conf/spark-defaults.conf
 ``` 
 
-```
-spark.master            spark://5.6.7.8:7077
+```text
+spark.master            spark://10.11.13.10:7077
 spark.executor.memory   1g
 spark.eventLog.enabled  true
 spark.serializer        org.apache.spark.serializer.KryoSerializer
@@ -199,53 +224,80 @@ spark.serializer        org.apache.spark.serializer.KryoSerializer
 
 
 Copy and edit `spark-env.sh` file :
-```
+```shell
 cp $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
 vim $SPARK_HOME/conf/spark-env.sh
 ```
+
 Add the following line :
-```
-export SPARK_MASTER_HOST=192.168.1.71
+```text
+export SPARK_MASTER_HOST=10.11.13.10
 ```
 
 Copy and edit `slaves` file :
-```
+```shell
 cp $SPARK_HOME/conf/slaves.template $SPARK_HOME/conf/slaves
 vim $SPARK_HOME/conf/slaves
 ```
 
 Add IP address of slaves. Delete "localhost" #if present
-```
-192.168.1.72
-192.168.1.71
+```text
+10.11.13.11
+10.11.13.12
 ```
 
-## Setup Spark Worker Node
+## Run the cluster
+From spark master node, run the following command :
+```shell
 $SPARK_HOME/sbin/start-all.sh
+```
 
-
+The spark ui will be available on [10.11.13.10:8080](http://10.11.13.10:8080)
 
 ## Submitting Application to Cluster
-We can check if our cluster if functioning by submitting an application. A Spark Application detects SparkContext instance which holds the SparkConf object which specifies whether the application has to run in Local processes or Cluster processes. We will cover this in future posts, but for now just run the code below to calculate the value of Pi.
+We can check if our cluster is correctly running by submitting an application. Spark comes with some examples, run the code below to calculate the value of Pi.
 
-#IP=MASTER node IP address
-#PORT=7077 for me
-#You can check your master address by opening #https://127.0.0.1:8080/
-$ MASTER=spark://IP:PORT $SPARK_HOME/bin/run-example org.apache.spark.examples.SparkPi#You should get a value and bunch of warnings
+```shell
+spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master spark://192.168.1.71:7077 \
+  $SPARK_HOME/examples/jars/spark-examples_2.12-3.1.2.jar
+```
+In the console, you will see the following output : 
+
+```text title="Compute PI" {11}
+21/06/20 10:10:49 INFO SparkContext: Running Spark version 3.1.2
+21/06/20 10:10:49 INFO ResourceUtils: ==============================================================
+21/06/20 10:10:49 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/06/20 10:10:49 INFO ResourceUtils: ==============================================================
+21/06/20 10:10:50 INFO SparkContext: Submitted application: Spark Pi
+...
+21/06/20 10:10:57 INFO DAGScheduler: ResultStage 0 (reduce at SparkPi.scala:38) finished in 3.687 s
+21/06/20 10:10:57 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+21/06/20 10:10:57 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+21/06/20 10:10:57 INFO DAGScheduler: Job 0 finished: reduce at SparkPi.scala:38, took 3.807045 s
+Pi is roughly 3.141715708578543
+21/06/20 10:10:57 INFO SparkUI: Stopped Spark web UI at http://192.168.1.71:4040
+21/06/20 10:10:57 INFO StandaloneSchedulerBackend: Shutting down all executors
+```
+
+Once completed, the application name will show up in the "Completed Applications" section in the Spark UI:
+<div style={{textAlign: 'center'}}><img alt="Spark UI" src={useBaseUrl('/img/setup_spark_cluster/pi_application.png')} /></div>
+
+## Using Spark History Server
+To check applications logs, you can run Spark history server on master node :
+```shell
+start-history-server.sh
+```
+
+The UI will be available on [10.11.13.10:18080](http://10.11.13.10:18080)
+<div style={{textAlign: 'center'}}><img alt="Spark History Server UI" src={useBaseUrl('/img/setup_spark_cluster/spark_history_server.png')} /></div>
 
 
-You should see the similar screen on Spark UI as shown below.
-
-
+## "One Playbook to unite them all"
+Finally, we don't want to repeat all these steps each time we add a new worker node. 
+So what we did is, we created an Ansible playbook that provisions the VMs automatically. The project is found here : [ansible-vagrant-stacks](https://github.com/helkaroui/ansible-vagrant-stacks/tree/main/spark).
 
 ## Conclusion
-
-In this post, we have learnt how to setup your own cluster environment in Apache Spark and how to submit a simple application to it and navigate the states of nodes using Spark UI.
-
-
-
-
-
-Next :
-- Setup Spark metrics
-- 
+In this post, we have learnt how to setup our own Spark Stand Alone Cluster and how to submit a simple application to it.
+This setup will allow us to experiment with Spark's fundamental and deep dive into its internals.
