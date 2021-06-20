@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[44],{112:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Update a running pod in k8s","permalink":"/blog/Update a running pod in k8s"},{"title":"Install docker compose on RPI","permalink":"/blog/Install docker compose on RPI"},{"title":"Welcome","permalink":"/blog/welcome"}]}')}}]);
