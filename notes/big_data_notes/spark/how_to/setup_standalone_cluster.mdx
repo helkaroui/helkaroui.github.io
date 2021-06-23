@@ -260,7 +260,7 @@ We can check if our cluster is correctly running by submitting an application. S
 ```shell
 spark-submit \
   --class org.apache.spark.examples.SparkPi \
-  --master spark://192.168.1.71:7077 \
+  --master spark://10.11.13.10:7077 \
   $SPARK_HOME/examples/jars/spark-examples_2.12-3.1.2.jar
 ```
 In the console, you will see the following output : 
