@@ -56,15 +56,27 @@ module.exports = {
             },
             items: [
                 {
-                    to: 'home_cloud/overview/',
-                    activeBasePath: 'home_cloud',
-                    label: 'Home Cloud Cookbook',
+                    to: 'home_lab/overview/',
+                    activeBasePath: 'home_lab',
+                    label: 'my Home Lab',
                     position: 'left',
                 },
                 {
                     to: 'big_data/overview/',
                     activeBasePath: 'big_data',
-                    label: 'Big Data Cookbook',
+                    label: 'Big Data Tutorials',
+                    position: 'left',
+                },
+                {
+                    to: 'scala/overview/',
+                    activeBasePath: 'scala',
+                    label: 'Scala',
+                    position: 'left',
+                },
+                {
+                    to: 'python/overview/',
+                    activeBasePath: 'python',
+                    label: 'Python',
                     position: 'left',
                 },
                 {
@@ -147,9 +159,9 @@ module.exports = {
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'home_cloud_notes', // omitted => default instance
-                path: 'notes/home_cloud_notes/',
-                routeBasePath: 'home_cloud',
+                id: 'home_lab_notes', // omitted => default instance
+                path: 'notes/home_lab_notes/',
+                routeBasePath: 'home_lab',
                 sidebarPath: require.resolve('./sidebars/sidebarHomeCloud.js'),
             },
         ],
@@ -157,10 +169,20 @@ module.exports = {
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'software_engineering_notes', // omitted => default instance
-                path: 'notes/software_engineering_notes/',
-                routeBasePath: 'software_engineering',
-                sidebarPath: require.resolve('./sidebars/sidebarSoftwareEngineering.js'),
+                id: 'scala_notes', // omitted => default instance
+                path: 'notes/scala_notes/',
+                routeBasePath: 'scala',
+                sidebarPath: require.resolve('./sidebars/sidebarScala.js'),
+            },
+        ],
+
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'python_notes', // omitted => default instance
+                path: 'notes/python_notes/',
+                routeBasePath: 'python',
+                sidebarPath: require.resolve('./sidebars/sidebarPython.js'),
             },
         ],
     ]

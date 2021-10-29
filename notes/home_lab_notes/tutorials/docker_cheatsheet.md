@@ -1,5 +1,5 @@
 ---
-title: 03-Docker cheatsheet
+title: Docker cheatsheet
 ---
 
 

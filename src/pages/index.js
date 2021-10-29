@@ -73,7 +73,7 @@ platform, to how to optimize your big data jobs.">
                                 styles.getStarted,
                             )}
                             to={useBaseUrl('big_data/spark/internals/overview/')}>
-                            Dive into Spark's notes 🚀
+                            Dive into Big Data 🚀
                         </Link>
                         <br/>
                         <Link
@@ -81,8 +81,8 @@ platform, to how to optimize your big data jobs.">
                                 'button button--outline button--secondary button--lg',
                                 styles.getStarted,
                             )}
-                            to={useBaseUrl('home_cloud/overview/')}>
-                            Explore my home-cloud articles 📝
+                            to={useBaseUrl('home_lab/overview/')}>
+                            Explore my home-lab 📝
                         </Link>
                     </div>
                 </div>

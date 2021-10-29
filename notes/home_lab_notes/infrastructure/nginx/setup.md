@@ -1,5 +1,5 @@
 ---
-title: Nginx
+title: 01- setup Nginx
 ---
 
 In order to 

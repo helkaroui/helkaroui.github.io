@@ -17,24 +17,31 @@ module.exports = {
                     type: 'category',
                     label: 'Network & Security',
                     items: [
-                        'services/powerdns',
-                        'services/openvpn',
-                        'services/keycloak',
-                        'services/nginx'
+                        'infrastructure/powerdns',
+                        'infrastructure/openvpn',
+                        'infrastructure/keycloak',
+                        {
+                            type: 'category',
+                            label: 'Nginx',
+                            items: [
+                                'infrastructure/nginx/setup',
+                                'infrastructure/nginx/nginx-security-best-practices',
+                            ]
+                        },
                     ]
                 },
                 {
                     type: 'category',
                     label: 'Storage',
                     items: [
-                        'services/minio'
+                        'infrastructure/minio'
                     ]
                 },
                 {
                     type: 'category',
                     label: 'Applications',
                     items: [
-                        'services/compare_used_cars'
+                        'infrastructure/compare_used_cars'
                     ]
                 },
             ]
@@ -44,9 +51,8 @@ module.exports = {
             label: 'Tutorials',
             collapsed: false,
             items: [
-                'tutorials/setup-nginx',
-                'tutorials/nginx-security-best-practices',
-                'tutorials/docker_cheatsheet'
+                'tutorials/docker_cheatsheet',
+                'tutorials/k8s_cheatsheet'
             ]
         }
 
