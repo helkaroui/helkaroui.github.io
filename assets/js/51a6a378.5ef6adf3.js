@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[7462],{7812:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"sharek","name":"sharek","count":1,"permalink":"/blog/tags/sharek"}')}}]);

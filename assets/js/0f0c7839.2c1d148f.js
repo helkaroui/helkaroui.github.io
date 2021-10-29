@@ -1,1 +1,0 @@
-(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[7390],{6318:function(e){"use strict";e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"rpi","name":"rpi","count":1,"permalink":"/blog/tags/rpi"}')}}]);

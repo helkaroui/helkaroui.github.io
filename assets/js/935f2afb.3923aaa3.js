@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[53],{1109:function(e){e.exports=JSON.parse('{"pluginId":"default","version":"current","label":"Next","isLast":true,"docsSidebars":{"defaultSidebar":[{"type":"link","label":"Thank you!","href":"/docs/thank-you"}]},"permalinkToSidebar":{"/docs/thank-you":"defaultSidebar"}}')}}]);
