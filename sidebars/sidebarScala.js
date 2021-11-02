@@ -1,6 +1,8 @@
 module.exports = {
     docs: [
         'overview',
+        'best_practices',
+        'hacks',
         {
             type: 'category',
             label: 'Functional Programming',

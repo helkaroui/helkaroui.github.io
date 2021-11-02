@@ -68,6 +68,12 @@ module.exports = {
                     position: 'left',
                 },
                 {
+                    to: 'cloud/kubernetes/getting_started',
+                    activeBasePath: 'cloud',
+                    label: 'Cloud',
+                    position: 'left',
+                },
+                {
                     to: 'scala/overview/',
                     activeBasePath: 'scala',
                     label: 'Scala',
@@ -185,5 +191,15 @@ module.exports = {
                 sidebarPath: require.resolve('./sidebars/sidebarPython.js'),
             },
         ],
+
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'cloud_notes', // omitted => default instance
+                path: 'notes/cloud_notes/',
+                routeBasePath: 'cloud',
+                sidebarPath: require.resolve('./sidebars/sidebarCloud.js'),
+            },
+        ]
     ]
 };
