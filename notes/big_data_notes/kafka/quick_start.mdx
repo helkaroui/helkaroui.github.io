@@ -1,0 +1,180 @@
+---
+title: Quick Start
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Introduction
+Kafka is a message broker system. It's main purpose is to handle real-time data feeds send by producers and make it available to consumers to subscribe and read those feeds.
+In other terms, Kafka is a data bus for scalable distributed systems.
+Kafka insures 3 main key points : 
+- unified plateform
+- high-throughput
+- low-latency
+
+
+## How does kafka work in a nuttshel ?
+Kafka is a distributed system consisting of servers and clients that communicate via a high-performance TCP network protocol
+
+## Setup a kafka cluster
+In this tutorial, we will use docker-compose to run a 3 node cluster.
+
+```yaml
+version: '2'
+
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+     - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka-1:
+    image: 'bitnami/kafka:latest'
+    hostname: kafka.example.com
+    ports:
+      - '9091:9092'
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+
+  kafka-2:
+    image: 'bitnami/kafka:latest'
+    hostname: kafka.example.com
+    ports:
+      - '9092:9092'
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+
+  kafka-3:
+    image: 'bitnami/kafka:latest'
+    hostname: kafka.example.com
+    ports:
+      - '9093:9092'
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+```
+
+
+```shell
+docker-compose up -d
+```
+
+```shell
+zkCli.sh
+
+> ls /brokers/ids
+[1001, 1002, 1003]
+```
+
+
+## Manage topics
+
+### Create topics
+
+```shell title="Create a topic"
+kafka-topics.sh --zookeeper zookeeper:2181 --create --topic sharek.awesome-tutorials.likes --partitions 3 --replication-factor 3
+```
+
+```text
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic sharek.awesome-tutorials.likes.
+```
+
+```shell title="List topics"
+kafka-topics.sh --zookeeper zookeeper:2181 --list
+```
+
+
+```shell title="List topics"
+kafka-topics.sh --zookeeper zookeeper:2181 --describe
+```
+
+```text
+Topic: sharek.awesome-tutorials.likes   TopicId: j8Lr93OTQSytSsasSZk4mg PartitionCount: 3       ReplicationFactor: 3    Configs: 
+        Topic: sharek.awesome-tutorials.likes   Partition: 0    Leader: 1001    Replicas: 1001,1002,1003        Isr: 1001
+        Topic: sharek.awesome-tutorials.likes   Partition: 1    Leader: 1002    Replicas: 1002,1003,1001        Isr: 1002,1003,1001
+        Topic: sharek.awesome-tutorials.likes   Partition: 2    Leader: 1003    Replicas: 1003,1001,1002        Isr: 1003,1001,1002
+```
+
+
+### Configure topics
+retention
+purge 
+
+
+### Delete a topic
+
+```shell
+kafka-topics.sh --zookeeper zookeeper:2181 --delete --topic sharek.awesome-tutorials.likes
+```
+
+
+
+## Create simple producers and clients
+
+<Tabs className="unique-tabs" groupId="programming-language"  defaultValue="python" values={[{label: 'Python', value: 'python'}, {label: 'Scala', value: 'scala'}, {label: 'Go', value: 'go'} ]}>
+<TabItem value="python">
+
+```py
+pip install kafka-python
+```
+</TabItem>
+<TabItem value="scala">
+
+```scala
+```
+</TabItem>
+<TabItem value="go">
+
+```go
+
+```
+</TabItem>
+</Tabs>
+
+
+### Producer
+
+<Tabs className="unique-tabs" groupId="programming-language"  defaultValue="python" values={[{label: 'Python', value: 'python'}, {label: 'Scala', value: 'scala'}, {label: 'Go', value: 'go'} ]}>
+<TabItem value="python">
+
+```py
+from time import sleep
+from json import dumps
+from random import random
+from kafka import KafkaProducer
+import itertools as it
+
+bootstrap_servers = ['localhost:9093']
+serialiser = lambda x: dumps(x).encode('utf-8')
+
+topic_name = "sharek.tutorial.likes"
+producer = KafkaProducer(bootstrap_servers=bootstrap_servers, value_serializer=serialiser)
+
+counter = it.count()
+while True:
+    data = {'x' : next(counter), 'y': random()}
+    producer.send(topic_name, value=data)
+    sleep(0.5)
+```
+</TabItem>
+<TabItem value="scala">
+
+```scala
+
+```
+</TabItem>
+<TabItem value="go">
+
+```go
+
+```
+</TabItem>
+</Tabs>
+
+
+## Resources
+- https://medium.com/@TimvanBaarsen/apache-kafka-cli-commands-cheat-sheet-a6f06eac01b

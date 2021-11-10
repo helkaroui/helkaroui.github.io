@@ -74,13 +74,13 @@ module.exports = {
                     position: 'left',
                 },
                 {
-                    to: 'scala/overview/',
+                    to: 'scala/quick_start/',
                     activeBasePath: 'scala',
                     label: 'Scala',
                     position: 'left',
                 },
                 {
-                    to: 'python/overview/',
+                    to: 'python/quick_start/',
                     activeBasePath: 'python',
                     label: 'Python',
                     position: 'left',

@@ -1,6 +1,6 @@
 module.exports = {
     docs: [
-        'overview',
+        'quick_start',
         'best_practices',
         'hacks',
         {

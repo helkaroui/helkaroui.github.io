@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Quick start
 ---
 
 In this section you will find interesting notes covering some of the most interesting topics in software engineering. 

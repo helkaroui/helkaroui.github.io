@@ -4,7 +4,7 @@ module.exports = {
         {
             type: 'category',
             label: 'Apache Spark',
-            collapsed: false,
+            collapsed: true,
             items: [
                 {
                     type: 'category',
@@ -24,7 +24,6 @@ module.exports = {
                     type: 'category',
                     label: 'Spark optimizations',
                     items: [
-                        'spark/optimizations/overview',
                         'spark/optimizations/quick_wins',
                         'spark/optimizations/reducebykey_vs_groupbykey'
                         //'spark/optimizations/groupby_imbalanced_dataset'
@@ -32,5 +31,33 @@ module.exports = {
                 },
             ],
         },
+
+        {
+            type: 'category',
+            label: 'Kafka',
+            collapsed: true,
+            items: [
+                'kafka/quick_start',
+                'kafka/cheat_sheet'
+            ]
+        },
+        {
+            type: 'category',
+            label: 'ElasticSearch',
+            collapsed: true,
+            items: []
+        },
+        {
+            type: 'category',
+            label: 'BigQuery',
+            collapsed: true,
+            items: []
+        },
+        {
+            type: 'category',
+            label: 'Hive',
+            collapsed: true,
+            items: []
+        }
     ],
 };

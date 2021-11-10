@@ -72,8 +72,8 @@ platform, to how to optimize your big data jobs.">
                                 'button button--outline button--secondary button--lg',
                                 styles.getStarted,
                             )}
-                            to={useBaseUrl('big_data/spark/internals/overview/')}>
-                            Dive into Big Data 🚀
+                            to={useBaseUrl('big_data/overview/')}>
+                            Big Data Tutorials🚀
                         </Link>
                         <br/>
                         <Link
