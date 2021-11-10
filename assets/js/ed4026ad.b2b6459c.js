@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[1107],{5370:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"elasticsearch","name":"elasticsearch","count":1,"permalink":"/blog/tags/elasticsearch"}')}}]);
