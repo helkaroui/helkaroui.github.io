@@ -38,7 +38,8 @@ module.exports = {
             collapsed: true,
             items: [
                 'kafka/quick_start',
-                'kafka/cheat_sheet'
+                'kafka/cheat_sheet',
+                'kafka/best_practices'
             ]
         },
         {

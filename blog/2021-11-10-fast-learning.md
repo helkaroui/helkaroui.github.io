@@ -1,11 +1,11 @@
 ---
 slug: fast-learning
-title: How to learn 5 Big data tools online (fast)
+title: How to learn Big data tools online (fast)
 author: Hamza EL KAROUI
 author_title: Data Engineer @ DataFab.io
 author_url: https://github.com/helkaroui
 author_image_url: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light
-tags: [sharek, big data, kafka, bigquery, elasticsearch, hive, airflow]
+tags: [sharek, big data, kafka, bigquery, elasticsearch, hive, airflow, go, mlflow]
 ---
 
 ## It's been a while since I've learned anything new ! 
@@ -41,10 +41,12 @@ Sleep is when most of the memory consolidation process occurs. That's why even a
 ### List of tools
 I've also dressed a list of tools that I want to learn / master fast :
 - Kafka : is a message broker
+- Go : an awesome language to learn
+- Airflow : is a workflow management platform created by Airbnb
 - BigQuery : is a data warehouse developed by Google
+- MLFlow : is a platforme to streamline machine learning development
 - ElasticSearch : the most famous Search engine 
 - Apache Hive : is a data warehouse software project built on top of Apache Hadoop
-- Airflow : is a workflow management platform created by Airbnb
 
 
 ### What to produce at the end ?

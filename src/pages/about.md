@@ -48,15 +48,15 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 <br/><br/><br/>
 
 ## Mastered Skills
+* Programming languages
+  * Scala
+  * Python
+  * SQL
 * Big data Tools & frameworks
   * Mastering Spark, Spark Streaming
   * Akka Actors & Akka Streaming
   * ELK
   * Kafka for Event Driven Architecture
-* Software Engineering :
-  * Scala, zio for concurrent programming
-  * Python
-  * SQL
 * Automation :
   * Ansible + Vagrant
   * Jenkins, GitlabCI
@@ -74,12 +74,20 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 - Spark Streaming :)
 - Discovering ZIO
 
-### 2021 (WIP)
+### 2021 (Work in progress)
 - Mastering Spark optimizations
 - Deep dive into functional programming
 - ML development
 - Ansible
 - AWS certification
+- Mastering the following tools :
+  - Airflow
+  - Kafka
+  - Go
+  - BigQuery
+  - ElasticSearch
+  - Hive
+  - MLFlow
 
 <br/><br/><br/>
 

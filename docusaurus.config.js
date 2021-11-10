@@ -86,6 +86,12 @@ module.exports = {
                     position: 'left',
                 },
                 {
+                    to: 'go/quick_start/',
+                    activeBasePath: 'go',
+                    label: 'Go',
+                    position: 'left',
+                },
+                {
                     to: 'about',
                     label: 'About',
                     position: 'right'
@@ -199,6 +205,16 @@ module.exports = {
                 path: 'notes/cloud_notes/',
                 routeBasePath: 'cloud',
                 sidebarPath: require.resolve('./sidebars/sidebarCloud.js'),
+            },
+        ],
+
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'go_notes', // omitted => default instance
+                path: 'notes/go_notes/',
+                routeBasePath: 'go',
+                sidebarPath: require.resolve('./sidebars/sidebarGo.js'),
             },
         ]
     ]
