@@ -50,7 +50,7 @@ I've also dressed a list of tools that I want to learn / master fast :
 ### What to produce at the end ?
 So the last part of the plan is to write comprehensive tutorials, examples and summaries then share it on sharek.dev.
 
-For each tool, I will produce the following :
+For each tool, I will follow these steps :
 - Discover the tool documentations
 - Read some tutorials and getting started articles
 - Write a summary on a notebook
@@ -59,7 +59,6 @@ For each tool, I will produce the following :
   - Create a "Cheat sheet" that lists quick commands and cool tricks
   - Create a "internals" section that summaries core concepts
   - Create a "Best practices" article to dress the most important practices to be aware of.
-
 
 I hope this learning method will give its fruits. I'll keep you updated of the result !
 Cheers
