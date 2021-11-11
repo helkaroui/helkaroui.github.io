@@ -4,9 +4,16 @@
         <title>Sharek.dev Blog</title>
         <link>https://helkaroui.github.io/blog</link>
         <description>Sharek.dev Blog</description>
-        <lastBuildDate>Wed, 10 Nov 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Nov 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[A curated list of my Todos :)]]></title>
+            <link>https://helkaroui.github.io/blog/todo</link>
+            <guid>todo</guid>
+            <pubDate>Thu, 11 Nov 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Todo]]></description>
+        </item>
         <item>
             <title><![CDATA[How to learn Big data tools online (fast)]]></title>
             <link>https://helkaroui.github.io/blog/fast-learning</link>
