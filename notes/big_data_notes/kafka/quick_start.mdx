@@ -125,6 +125,10 @@ pip install kafka-python
 <TabItem value="scala">
 
 ```scala
+libraryDependencies ++= Seq(
+    "org.apache.kafka" % "kafka-clients" % "2.5 .0",
+    scalaTest % Test
+  )
 ```
 </TabItem>
 <TabItem value="go">
@@ -164,7 +168,94 @@ while True:
 <TabItem value="scala">
 
 ```scala
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
+import java.util.Properties
 
+object SimpleProducer extends App {
+
+  val props = new Properties()
+  props.put("bootstrap.servers", "localhost:9093,localhost:9094,localhost:9095")
+  props.put("group.id", "scala-consumer")
+  props.put("auto.offset.reset", "latest")
+  props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+  props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+
+  val producer = new KafkaProducer[String, String](props)
+
+  val topic = "sharek.tutorial.likes"
+
+  while (true) {
+    producer.send(new ProducerRecord(topic, "Hi !"))
+    Thread.sleep(1000)
+  }
+}
+```
+</TabItem>
+<TabItem value="go">
+
+```go
+
+```
+</TabItem>
+</Tabs>
+
+### Consumer
+<Tabs className="unique-tabs" groupId="programming-language"  defaultValue="python" values={[{label: 'Python', value: 'python'}, {label: 'Scala', value: 'scala'}, {label: 'Go', value: 'go'} ]}>
+<TabItem value="python">
+
+```py
+from json import loads
+from kafka import KafkaConsumer
+
+bootstrap_servers = ['localhost:9093', 'localhost:9094', 'localhost:9095']
+def deserialiser(x): return loads(x.decode('utf-8'))
+
+
+topic_name = "sharek.tutorial.likes"
+
+consumer = KafkaConsumer(topic_name,
+                         bootstrap_servers=bootstrap_servers,
+                         auto_offset_reset='earliest', 
+                         enable_auto_commit=True, 
+                         group_id='sharek.consumer.likes', 
+                         value_deserializer=deserialiser)
+
+for message in consumer:
+    print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
+                                          message.offset, message.key,
+                                          message.value))
+```
+</TabItem>
+<TabItem value="scala">
+
+```scala
+import org.apache.kafka.clients.consumer.KafkaConsumer
+
+import java.time.Duration.ofHours
+import java.util.Properties
+import scala.jdk.CollectionConverters._
+
+object SimpleConsumer extends App {
+
+  val props = new Properties()
+  props.put("bootstrap.servers", "localhost:9093,localhost:9094,localhost:9095")
+  props.put("group.id", "scala-consumer")
+  props.put("auto.offset.reset", "latest")
+  props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+  props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
+
+  val consumer = new KafkaConsumer[String, String](props)
+
+  consumer.subscribe(List("sharek.tutorial.likes").asJavaCollection)
+
+  while(true) {
+    val record = consumer.poll(ofHours(100)).asScala
+
+    for (data <- record.iterator){
+      println(s"Fetched ${data.value()}")
+    }
+  }
+}
 ```
 </TabItem>
 <TabItem value="go">
