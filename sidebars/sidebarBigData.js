@@ -39,7 +39,15 @@ module.exports = {
             items: [
                 'kafka/quick_start',
                 'kafka/cheat_sheet',
-                'kafka/best_practices'
+                'kafka/best_practices',
+                {
+                    type: 'category',
+                    label: 'Internals',
+                    collapsed: true,
+                    items: [
+                        'kafka/internals/kafka_streams'
+                    ]
+                },
             ]
         },
         {
