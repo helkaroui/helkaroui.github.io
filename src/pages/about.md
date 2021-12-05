@@ -2,6 +2,8 @@
 title: About
 ---
 
+![Hamza EL KAROUI](https://avatars.githubusercontent.com/u/22795356?s=96&v=4)
+
 # About me
 Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant at [DataFab.io](https://datafab.io). 
 
@@ -60,6 +62,7 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 * Automation :
   * Ansible + Vagrant
   * Jenkins, GitlabCI
+  * Skaffold + kustomize
 
 <br/>
 
@@ -79,15 +82,21 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 - Deep dive into functional programming
 - ML development
 - Ansible
-- AWS certification
-- Mastering the following tools :
+- learning the following tools & languages :
+  - Kubernetes
   - Airflow
   - Kafka
   - Go
+### 2022
+- Learning:
   - BigQuery
+  - Airflow
+  - MLFlow
+  - Go
+- Mastering
+  - Kubernetes
   - ElasticSearch
   - Hive
-  - MLFlow
 
 <br/><br/><br/>
 

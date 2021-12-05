@@ -1,5 +1,5 @@
 ---
-title: Best practices
+title: Hacks & Tricks
 ---
 
 ### Generic Solution for Captcha
@@ -31,7 +31,7 @@ public class ReCaptcha_click {
 
 
 
-o click() on the element, as the desired element is within an <iframe> so you have to:
+- click() on the element, as the desired element is within an \<iframe\> so you have to:
 
     Induce a waiter and switch to the desired frame.
     Induce a waiter for the desired element to be clickable.

@@ -3,7 +3,7 @@ module.exports = {
         {
             type: 'category',
             label: 'Airflow',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'airflow/getting_started'
             ],
@@ -12,7 +12,7 @@ module.exports = {
         {
             type: 'category',
             label: 'Docker',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'docker/cheat_sheet'
             ],
@@ -21,7 +21,7 @@ module.exports = {
         {
             type: 'category',
             label: 'Kubernetes',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'kubernetes/getting_started',
                 'kubernetes/storage',

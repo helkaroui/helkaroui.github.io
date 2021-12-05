@@ -34,7 +34,8 @@ module.exports = {
                     type: 'category',
                     label: 'Storage',
                     items: [
-                        'infrastructure/minio'
+                        'infrastructure/minio',
+                        'infrastructure/mount_disk'
                     ]
                 },
                 {
