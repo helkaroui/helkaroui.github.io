@@ -11,7 +11,7 @@ module.exports = {
     projectName: 'helkaroui.github.io', // Usually your repo name.
     themeConfig: {
         prism: {
-            additionalLanguages: ["java", "scala"],
+            additionalLanguages: ["java", "scala", "python", "go", "yaml", "sql", "docker", "batch"],
             theme: require('prism-react-renderer/themes/dracula'),
         },
         colorMode: {
@@ -20,32 +20,11 @@ module.exports = {
 
             // Hides the switch in the navbar
             // Useful if you want to support a single color mode
-            disableSwitch: true,
+            disableSwitch: false,
 
             // Should we use the prefers-color-scheme media-query,
             // using user system preferences, instead of the hardcoded defaultMode
-            respectPrefersColorScheme: false,
-
-            // Dark/light switch icon options
-            switchConfig: {
-                // Icon for the switch while in dark mode
-                darkIcon: '🌙',
-
-                // CSS to apply to dark icon,
-                // React inline style object
-                // see https://reactjs.org/docs/dom-elements.html#style
-                darkIconStyle: {
-                    marginLeft: '2px',
-                },
-
-                // Unicode icons such as '\u2600' will work
-                // Unicode with 5 chars require brackets: '\u{1F602}'
-                lightIcon: '\u{1F602}',
-
-                lightIconStyle: {
-                    marginLeft: '1px',
-                },
-            },
+            respectPrefersColorScheme: false
         },
 
         navbar: {
@@ -56,41 +35,80 @@ module.exports = {
             },
             items: [
                 {
-                    to: 'home_lab/overview/',
-                    activeBasePath: 'home_lab',
-                    label: 'my Home Lab',
+                    type: 'dropdown',
+                    label: 'Data engineering',
                     position: 'left',
+                    items: [
+                    ]
                 },
                 {
-                    to: 'big_data/overview/',
-                    activeBasePath: 'big_data',
-                    label: 'Big Data Tutorials',
+                    type: 'dropdown',
+                    label: 'Data processing',
                     position: 'left',
+                    items: [
+                        {
+                            to: 'big_data/spark/internals/overview/',
+                            activeBasePath: 'big_data/spark',
+                            label: 'Apache Spark',
+                        },
+                        {
+                            to: 'big_data/kafka/quick_start/',
+                            activeBasePath: 'big_data/kafka',
+                            label: 'Apache Kafka',
+                        },
+                    ]
                 },
                 {
-                    to: 'cloud/kubernetes/getting_started',
-                    activeBasePath: 'cloud',
+                    type: 'dropdown',
                     label: 'Cloud',
                     position: 'left',
+                    items: [
+                        {
+                            to: 'cloud/docker/cheat_sheet',
+                            activeBasePath: 'cloud/docker',
+                            label: 'docker',
+                        },
+                        {
+                            to: 'cloud/kubernetes/getting_started',
+                            activeBasePath: 'cloud/kubernetes',
+                            label: 'Kubernetes',
+                        },
+                    ]
                 },
-                {
-                    to: 'scala/quick_start/',
-                    activeBasePath: 'scala',
-                    label: 'Scala',
-                    position: 'left',
-                },
-                {
-                    to: 'python/quick_start/',
-                    activeBasePath: 'python',
-                    label: 'Python',
-                    position: 'left',
-                },
-                {
-                    to: 'go/quick_start/',
-                    activeBasePath: 'go',
-                    label: 'Go',
-                    position: 'left',
-                },
+//                {
+//                    type: 'dropdown',
+//                    label: 'Functional Programming',
+//                    position: 'left',
+//                    items: []
+//                },
+//                {
+//                    type: 'dropdown',
+//                    label: 'Librairies',
+//                    position: 'left',
+//                    items: []
+//                },
+//                {
+//                    type: 'dropdown',
+//                    label: 'Programming languages',
+//                    position: 'left',
+//                    items: [
+//                        {
+//                            to: 'scala/quick_start/',
+//                            activeBasePath: 'scala',
+//                            label: 'Scala',
+//                        },
+//                        {
+//                            to: 'python/quick_start/',
+//                            activeBasePath: 'python',
+//                            label: 'Python',
+//                        },
+//                        {
+//                            to: 'go/quick_start/',
+//                            activeBasePath: 'go',
+//                            label: 'Go',
+//                        },
+//                    ]
+//                },
                 {
                     to: 'about',
                     label: 'About',

@@ -50,23 +50,5 @@ module.exports = {
                 },
             ]
         },
-        {
-            type: 'category',
-            label: 'ElasticSearch',
-            collapsed: true,
-            items: []
-        },
-        {
-            type: 'category',
-            label: 'BigQuery',
-            collapsed: true,
-            items: []
-        },
-        {
-            type: 'category',
-            label: 'Hive',
-            collapsed: true,
-            items: []
-        }
     ],
 };
