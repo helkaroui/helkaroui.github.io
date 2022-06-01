@@ -4,7 +4,7 @@ module.exports = {
     tagline: 'Sharek\'s Geek Cookbook',
     url: 'https://helkaroui.github.io',
     baseUrl: '/',
-    onBrokenLinks: 'throw',
+    onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
     organizationName: 'helkaroui', // Usually your GitHub org/user name.
