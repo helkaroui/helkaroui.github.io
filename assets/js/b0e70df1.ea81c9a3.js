@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[1905],{2963:function(e){e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"python_notes"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[2547],{5095:function(e){e.exports=JSON.parse('[{"label":"python","permalink":"/python/tags/python","count":1}]')}}]);
