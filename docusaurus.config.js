@@ -36,25 +36,47 @@ module.exports = {
             items: [
                 {
                     type: 'dropdown',
-                    label: 'Data engineering',
+                    label: 'Architecture',
                     position: 'left',
                     items: [
+                        {
+                            to: 'architecture/airflow/quick_start',
+                            activeBasePath: 'architecture/airflow',
+                            label: 'Apache Airflow',
+                        },
                     ]
                 },
                 {
                     type: 'dropdown',
-                    label: 'Data processing',
+                    label: 'Data Processing',
                     position: 'left',
                     items: [
                         {
-                            to: 'big_data/spark/internals/overview/',
-                            activeBasePath: 'big_data/spark',
+                            to: 'data_processing/spark/quick_start',
+                            activeBasePath: 'data_processing/spark',
                             label: 'Apache Spark',
                         },
                         {
-                            to: 'big_data/kafka/quick_start/',
-                            activeBasePath: 'big_data/kafka',
+                            to: 'data_processing/kafka/quick_start/',
+                            activeBasePath: 'data_processing/kafka',
                             label: 'Apache Kafka',
+                        },
+                    ]
+                },
+                {
+                    type: 'dropdown',
+                    label: 'Containers',
+                    position: 'left',
+                    items: [
+                        {
+                            to: 'containers/docker/cheat_sheet',
+                            activeBasePath: 'containers/docker',
+                            label: 'Docker',
+                        },
+                        {
+                            to: 'containers/kubernetes/quick_start',
+                            activeBasePath: 'containers/kubernetes',
+                            label: 'Kubernetes',
                         },
                     ]
                 },
@@ -63,52 +85,20 @@ module.exports = {
                     label: 'Cloud',
                     position: 'left',
                     items: [
+                    ]
+                },
+                {
+                    type: 'dropdown',
+                    label: 'The Developer Corner',
+                    position: 'left',
+                    items: [
                         {
-                            to: 'cloud/docker/cheat_sheet',
-                            activeBasePath: 'cloud/docker',
-                            label: 'docker',
-                        },
-                        {
-                            to: 'cloud/kubernetes/getting_started',
-                            activeBasePath: 'cloud/kubernetes',
-                            label: 'Kubernetes',
+                            to: 'developer/languages/scala/quick_start',
+                            activeBasePath: 'developer/languages/scala',
+                            label: 'Scala',
                         },
                     ]
                 },
-//                {
-//                    type: 'dropdown',
-//                    label: 'Functional Programming',
-//                    position: 'left',
-//                    items: []
-//                },
-//                {
-//                    type: 'dropdown',
-//                    label: 'Librairies',
-//                    position: 'left',
-//                    items: []
-//                },
-//                {
-//                    type: 'dropdown',
-//                    label: 'Programming languages',
-//                    position: 'left',
-//                    items: [
-//                        {
-//                            to: 'scala/quick_start/',
-//                            activeBasePath: 'scala',
-//                            label: 'Scala',
-//                        },
-//                        {
-//                            to: 'python/quick_start/',
-//                            activeBasePath: 'python',
-//                            label: 'Python',
-//                        },
-//                        {
-//                            to: 'go/quick_start/',
-//                            activeBasePath: 'go',
-//                            label: 'Go',
-//                        },
-//                    ]
-//                },
                 {
                     to: 'about',
                     label: 'About',
@@ -129,19 +119,19 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [
-                {
-                    title: 'Recent articles',
-                    items: [
-                        {
-                            label: 'Getting started with Spark',
-                            to: 'big_data/overview',
-                        },
-                        {
-                            label: 'Spark optimization techniques you should know about',
-                            to: 'big_data/spark/optimizations/overview',
-                        },
-                    ],
-                },
+                //{
+                //    title: 'Recent articles',
+                //    items: [
+                //        {
+                //            label: 'Getting started with Spark',
+                //            to: 'data_processing/overview',
+                //        },
+                //        {
+                //            label: 'Spark optimization techniques you should know about',
+                //            to: 'data_processing/spark/optimizations/overview',
+                //        },
+                //    ],
+                //},
                 {
                     title: 'More',
                     items: [
@@ -179,61 +169,38 @@ module.exports = {
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'big_data_notes', // omitted => default instance
-                path: 'notes/big_data_notes/',
-                routeBasePath: 'big_data',
-                sidebarPath: require.resolve('./sidebars/sidebarBigData.js'),
+                id: 'data_processing',
+                path: 'sections/data_processing/',
+                routeBasePath: 'data_processing',
+                sidebarPath: require.resolve('./sidebars/data_processing.js'),
             },
         ],
-
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'home_lab_notes', // omitted => default instance
-                path: 'notes/home_lab_notes/',
-                routeBasePath: 'home_lab',
-                sidebarPath: require.resolve('./sidebars/sidebarHomeCloud.js'),
+                id: 'containers',
+                path: 'sections/containers/',
+                routeBasePath: 'containers',
+                sidebarPath: require.resolve('./sidebars/containers.js'),
             },
         ],
-
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'scala_notes', // omitted => default instance
-                path: 'notes/scala_notes/',
-                routeBasePath: 'scala',
-                sidebarPath: require.resolve('./sidebars/sidebarScala.js'),
+                id: 'architecture',
+                path: 'sections/architecture/',
+                routeBasePath: 'architecture',
+                sidebarPath: require.resolve('./sidebars/architecture.js'),
             },
         ],
-
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'python_notes', // omitted => default instance
-                path: 'notes/python_notes/',
-                routeBasePath: 'python',
-                sidebarPath: require.resolve('./sidebars/sidebarPython.js'),
+                id: 'developer',
+                path: 'sections/developer/',
+                routeBasePath: 'developer',
+                sidebarPath: require.resolve('./sidebars/developer.js'),
             },
         ],
-
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'cloud_notes', // omitted => default instance
-                path: 'notes/cloud_notes/',
-                routeBasePath: 'cloud',
-                sidebarPath: require.resolve('./sidebars/sidebarCloud.js'),
-            },
-        ],
-
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'go_notes', // omitted => default instance
-                path: 'notes/go_notes/',
-                routeBasePath: 'go',
-                sidebarPath: require.resolve('./sidebars/sidebarGo.js'),
-            },
-        ]
     ]
 };
