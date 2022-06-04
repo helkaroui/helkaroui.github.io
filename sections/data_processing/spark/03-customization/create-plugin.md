@@ -1,5 +1,8 @@
 ---
 title: Create a Spark plugin
+description: Extend Spark with custom plugin
+image: /img/plugins.jpg
+keywords: [spark, internal, plugins]
 ---
 
 ## Spark Plugin Framework

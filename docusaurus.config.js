@@ -23,7 +23,6 @@ module.exports = {
             {name: 'keywords', content: 'tech, big data, spark, GitOps'},
             {name: 'description', content: 'Demystifying inner-workings of Apache Spark, Kafka, Airflow and other big data tools'},
             {name: 'author', content: 'Hamza EL KAROUI'},
-            {name: 'twitter:card', content: 'summary'},
             {name: 'twitter:site', content: '@stringly_typed'},
             {name: 'twitter:creator', content: '@stringly_typed'},
         ],
