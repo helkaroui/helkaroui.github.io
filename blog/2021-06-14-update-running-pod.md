@@ -1,10 +1,7 @@
 ---
 slug: Update a running pod in k8s
 title: Update a running pod in k8s
-author: Hamza EL KAROUI
-author_title: Data Engineer @ DataFab.io
-author_url: https://github.com/helkaroui
-author_image_url: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light
+authors: [hamza]
 tags: [k8s]
 ---
 

@@ -1,10 +1,7 @@
 ---
 slug: fast-learning
 title: How to learn Big data tools online (fast)
-author: Hamza EL KAROUI
-author_title: Data Engineer @ DataFab.io
-author_url: https://github.com/helkaroui
-author_image_url: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light
+authors: [hamza]
 tags: [sharek, big data, kafka, bigquery, elasticsearch, hive, airflow, go, mlflow]
 ---
 

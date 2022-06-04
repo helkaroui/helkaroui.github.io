@@ -10,10 +10,23 @@ module.exports = {
     organizationName: 'helkaroui', // Usually your GitHub org/user name.
     projectName: 'helkaroui.github.io', // Usually your repo name.
     themeConfig: {
+        docs: {
+            sidebar: {
+                autoCollapseCategories: true,
+            }
+        },
         prism: {
             additionalLanguages: ["java", "scala", "python", "go", "yaml", "sql", "docker", "batch"],
             theme: require('prism-react-renderer/themes/dracula'),
         },
+        metadata: [
+            {name: 'keywords', content: 'tech, big data, spark, GitOps'},
+            {name: 'description', content: 'Demystifying inner-workings of Apache Spark, Kafka, Airflow and other big data tools'},
+            {name: 'author', content: 'Hamza EL KAROUI'},
+            {name: 'twitter:card', content: 'summary'},
+            {name: 'twitter:site', content: '@stringly_typed'},
+            {name: 'twitter:creator', content: '@stringly_typed'},
+        ],
         colorMode: {
             // "light" | "dark"
             defaultMode: 'light',
@@ -52,12 +65,12 @@ module.exports = {
                     position: 'left',
                     items: [
                         {
-                            to: 'data_processing/spark/quick_start',
+                            to: 'data_processing/spark',
                             activeBasePath: 'data_processing/spark',
                             label: 'Apache Spark',
                         },
                         {
-                            to: 'data_processing/kafka/quick_start/',
+                            to: 'data_processing/kafka/',
                             activeBasePath: 'data_processing/kafka',
                             label: 'Apache Kafka',
                         },
@@ -89,7 +102,7 @@ module.exports = {
                 },
                 {
                     type: 'dropdown',
-                    label: 'The Developer Corner',
+                    label: 'Developer\'s Corner',
                     position: 'left',
                     items: [
                         {

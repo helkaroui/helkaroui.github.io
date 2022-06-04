@@ -1,10 +1,7 @@
 ---
 slug: Install docker compose on RPI
 title: Install docker compose on RPI
-author: Hamza EL KAROUI
-author_title: Data Engineer @ DataFab.io
-author_url: https://github.com/helkaroui
-author_image_url: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light
+authors: [hamza]
 tags: [docker, RPI]
 ---
 I like to use Docker containers on my Raspberry Pis as they come with a great layer of abstraction and portability. 
