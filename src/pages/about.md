@@ -1,5 +1,6 @@
 ---
 title: About
+description: Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.
 ---
 
 ![Hamza EL KAROUI](https://avatars.githubusercontent.com/u/22795356?s=96&v=4)

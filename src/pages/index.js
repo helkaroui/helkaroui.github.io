@@ -13,8 +13,7 @@ export default function Home() {
     return (
         <Layout
             title={`My Geek Cookbook`}
-            description="Sharek's Geek Cookbook is a collection of how-to guides for multiple subjects varying from establishing your own container-based self-hosting
-platform, to how to optimize your big data jobs.">
+            description="Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.">
             <header className={clsx('hero hero--primary', styles.heroBanner)}>
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>

@@ -92,13 +92,13 @@ module.exports = {
                         },
                     ]
                 },
-                {
-                    type: 'dropdown',
-                    label: 'Cloud',
-                    position: 'left',
-                    items: [
-                    ]
-                },
+//                {
+//                    type: 'dropdown',
+//                    label: 'Cloud',
+//                    position: 'left',
+//                    items: [
+//                    ]
+//                },
                 {
                     type: 'dropdown',
                     label: 'Developer\'s Corner',
@@ -116,11 +116,11 @@ module.exports = {
                     label: 'About',
                     position: 'right'
                 },
-                {
-                    to: 'blog',
-                    label: 'Blog',
-                    position: 'right'
-                },
+//                {
+//                    to: 'blog',
+//                    label: 'Blog',
+//                    position: 'right'
+//                },
                 {
                     href: 'https://github.com/helkaroui',
                     label: 'GitHub',
