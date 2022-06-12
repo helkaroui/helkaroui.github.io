@@ -63,6 +63,7 @@ With Akka Cluster, we can :
 * Cost effectiveness : machines with average memory are cheaper then ones with more memory.
 
 - **Distriuted Data/State**
+
 ![Akka Cluster distributed data](./img/use_case_distributed_data.drawio.svg)
 
 - Provides local, replicated in-memory data storage
