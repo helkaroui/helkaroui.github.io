@@ -112,6 +112,18 @@ module.exports = {
                     ]
                 },
                 {
+                    type: 'dropdown',
+                    label: 'Projects',
+                    position: 'right',
+                    items: [
+                        {
+                            to: 'projects/scheduler',
+                            activeBasePath: 'projects/scheduler',
+                            label: 'Scheduler',
+                        },
+                    ]
+                },
+                {
                     to: 'about',
                     label: 'About',
                     position: 'right'
@@ -212,6 +224,15 @@ module.exports = {
                 path: 'sections/developer/',
                 routeBasePath: 'developer',
                 sidebarPath: require.resolve('./sidebars/developer.js'),
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'projects',
+                path: 'sections/projects/',
+                routeBasePath: 'projects',
+                sidebarPath: require.resolve('./sidebars/projects.js'),
             },
         ],
     ]

@@ -1,0 +1,11 @@
+---
+title: Akka Actors
+---
+
+The Actor Model provides a higher level of abstraction for writing concurrent and distributed systems. It alleviates the developer from having to deal with explicit locking and thread management, making it easier to write correct concurrent and parallel systems.
+
+
+
+Resources :
+- https://doc.akka.io/docs/akka/current/typed/guide/actors-intro.html
+- https://doc.akka.io/docs/akka/2.6/typed/interaction-patterns.html
