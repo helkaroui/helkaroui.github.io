@@ -2,7 +2,7 @@ module.exports = {
     docs: [
         {
             type: 'category',
-            label: 'Project: Scheduler',
+            label: 'Project: Nebula',
             collapsed: true,
             items: [
                 {

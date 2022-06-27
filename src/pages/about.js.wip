@@ -1,0 +1,204 @@
+import React from 'react';
+import Layout from '@theme/Layout';
+//import styles from './about.css';
+
+
+const certifications = [
+    {
+        title: "Lightbend Akka Cluster Fundamentals - Level 2",
+        url: "https://www.credly.com/badges/ccac1fc1-a614-430c-9598-6e28723ab6dd/linked_in?t=rdugzt",
+        img: "https://images.credly.com/size/340x340/images/cebb1e7b-28de-40e3-8876-6f4fdefc0363/LAC-Fun-badge-lvl2.png"
+    }
+]
+
+
+const experiences = [
+    {
+        title: "Senior Data Engineer",
+        company: "BNP Paribas",
+        company_url: "https://group.bnpparibas/",
+        from: "Mar 2021",
+        to: "Present",
+        description: [
+            "Optimizing Spark Jobs"
+        ]
+
+    },
+
+    {
+        title: "Data Engineer",
+        company: "Kering Group",
+        company_url: "https://www.kering.com",
+        from: "2019-06",
+        to: "2021-02",
+        description: [
+            "Designed a marketing attribution engine",
+            "Developed Data ingestion pipelines (Spark Batch)",
+            "Developed large scale streaming applications using Spark Streaming APIs"
+        ]
+
+    },
+
+    {
+        title: "Data Engineer",
+        company: "Make.org",
+        company_url: "https://www.kering.com",
+        from: "2019-01",
+        to: "2019-03",
+        description: [
+            "Developed NLP APIs with Akka Http & Akka Cluster",
+            "Produced targeted analysis."
+        ]
+
+    }
+]
+
+export default function About() {
+    return (
+        <Layout title="About" description="About Hamza EL KAROUI">
+            <div className="mt-6 max-w-screen-lg md:flex mx-auto">
+                <div className="md:w-1/3 p-2 relative">
+                    <div className="md:fixed">
+                        <div className="md:block">
+                            <img className="h-32 w-32 rounded-full mx-auto mx-4" src="https://avatars.githubusercontent.com/u/22795356?s=96&v=4" />
+                            <div className="mb-12 text-center mt-4 justify-center items-center">
+                                <h1 className="text-2xl text-xl text-gray-800 font-bold">
+                                    Hamza EL KAROUI
+                                </h1>
+                                <div className="md:text-lg text-gray-600">Data Engineer</div>
+                                <div className="text-gray-600 md:hidden mt-1">
+                                    (helkarou@gmail.com)
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mx-4 my-4 hidden md:block">
+                            <div className="my-5 text-lg text-gray-600 flex">
+                                <div className="mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
+                                        <path d="M20,4H6C4.897,4,4,4.897,4,6v5h2V8l6.4,4.8c0.178,0.133,0.389,0.2,0.6,0.2s0.422-0.067,0.6-0.2L20,8v9h-8v2h8 c1.103,0,2-0.897,2-2V6C22,4.897,21.103,4,20,4z M13,10.75L6.666,6h12.668L13,10.75z" />
+                                        <path d="M2 12H9V14H2zM4 15H10V17H4zM7 18H11V20H7z" />
+                                    </svg>
+                                </div>
+                                helkarou@gmail.com
+                            </div>
+                            <div className="my-5 text-lg text-gray-600 flex">
+                                <div className="mr-2">
+                                    <svg className="text-gray-600" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
+                                        <path d="M12,14c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4S9.794,14,12,14z M12,8c1.103,0,2,0.897,2,2s-0.897,2-2,2 s-2-0.897-2-2S10.897,8,12,8z" />
+                                        <path d="M11.42,21.814C11.594,21.938,11.797,22,12,22s0.406-0.062,0.58-0.186C12.884,21.599,20.029,16.44,20,10 c0-4.411-3.589-8-8-8S4,5.589,4,9.995C3.971,16.44,11.116,21.599,11.42,21.814z M12,4c3.309,0,6,2.691,6,6.005 c0.021,4.438-4.388,8.423-6,9.73C10.389,18.427,5.979,14.441,6,10C6,6.691,8.691,4,12,4z" />
+                                    </svg>
+                                </div>
+                                Paris, France
+                            </div>
+                            <a href="https://www.linkedin.com/in/hamza-el-karoui/" className="my-5 text-blue-500 text-lg text-gray-600 flex" target="_blank">
+                                <div className="mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
+                                        <path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h16c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z M8.339,18.337H5.667	v-8.59h2.672V18.337z M7.003,8.574c-0.856,0-1.548-0.694-1.548-1.548s0.691-1.548,1.548-1.548c0.854,0,1.548,0.693,1.548,1.548	S7.857,8.574,7.003,8.574z M18.338,18.337h-2.669V14.16c0-0.996-0.018-2.277-1.388-2.277c-1.39,0-1.601,1.086-1.601,2.207v4.248	h-2.667v-8.59h2.56v1.174h0.037c0.355-0.675,1.227-1.387,2.524-1.387c2.704,0,3.203,1.778,3.203,4.092V18.337z" />
+                                    </svg>
+                                </div>
+                                LinkedIn
+                            </a>
+                        </div>
+
+                        <div className="mx-4 my-4 hidden md:block">
+                            <h1 className="mb-4 text-2xl text-gray-700 font-bold">Licenses & certifications</h1>
+
+                            <div class="grid grid-flow-col">
+                                {
+                                    certifications.map(v =>
+                                        <CertificateBadge {...v} />
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div className="md:w-2/3 p-2 w-full">
+                    <div className="mx-4 mb-6">
+                        <h1 className="mb-4 text-4xl text-gray-700 font-bold">Summary</h1>
+                        <p className="text-lg">
+                            Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space)
+                        </p>
+                    </div>
+                    <div className="mx-4">
+                        <h1 className="mb-4 text-4xl text-gray-700 font-bold">Experience</h1>
+                        <ul>
+                            {
+                                experiences.map(v =>
+                                    <li className="mb-4">
+                                        <Experience {...v} />
+                                    </li>
+                                )
+                            }
+                        </ul>
+                    </div>
+                    <div className="mx-4">
+                        <h1 className="mb-4 text-4xl text-gray-700 font-bold">Skills</h1>
+                        <ul>
+                            <li className="mb-6 flex flex-wrap">
+                                <Badge text="Scala" />
+                                <Badge text="Spark" />
+                                <Badge text="PySpark" />
+                                <Badge text="Flask" />
+                                <Badge text="Python Pandas" />
+                                <Badge text="ETL Automation" />
+                                <Badge text="Design Pattern" />
+                                <Badge text="Distributed Systems" />
+                                <Badge text="Akka Actors" />
+                                <Badge text="Akka Cluster" />
+                                <Badge text="PostgreSQL" />
+                                <Badge text="Mysql/MariaDB" />
+                                <Badge text="MonggoDB" />
+                                <Badge text="Linux Sysadmin" />
+                                <Badge text="Networking" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    );
+}
+
+const Badge = ({ text }) => (
+    <span className="mr-2 my-1 rounded-full border px-4 text-sm py-2 font-medium bg-gray-200">{text}</span>
+);
+
+const CertificateBadge = ({ title, url, img }) => (
+    <a href={url} target="_blank">
+        <img src={img} class="w-24 h-auto" alt={title} />
+    </a>
+);
+
+
+
+const Experience = ({ title, company, company_url, description, from, to }) => (
+    <div>
+        <h2 className="text-2xl font-medium text-gray-800">
+            {title} @ <a href={company_url} target="_blank"><strong>{company}</strong></a>
+        </h2>
+        <div className="mt-1">
+            <div>
+                <i className="bx bx-calendar text-sm" style={{ color: '#666' }} />
+                <small className="text-sm text-gray-600">{from} - {to}</small>
+            </div>
+            <div>
+                <small className="text-base text-gray-800">
+                    <ul className="list-disc">
+                        {
+                        description.map(v => 
+                            <li>
+                                {v}
+                            </li>
+                            )
+                        }
+                    </ul>
+                </small>
+            </div>
+        </div>
+    </div>
+);
+

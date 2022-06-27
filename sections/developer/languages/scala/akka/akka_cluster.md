@@ -74,6 +74,8 @@ With Akka Cluster, we can :
 TBC
 
 
+## Cluster Failures
+
 
 
 ## Resources :

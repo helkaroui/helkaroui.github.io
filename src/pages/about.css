@@ -1,0 +1,123 @@
+.main-wrapper {
+    flex: 1 0 auto;
+}
+
+.md\:flex {
+    display: flex;
+}
+
+.max-w-screen-lg {
+    max-width: 1024px;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.md\:w-1\/3 {
+    width: 33.333333%;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.relative {
+    position: relative;
+}
+
+
+.md\:w-2\/3 {
+    width: 66.666667%;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.md\:fixed {
+    position: fixed;
+}
+
+.md\:block {
+    display: block;
+}
+
+
+
+
+.md\:block {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.w-32 {
+    width: 8rem;
+}
+
+.h-32 {
+    height: 8rem;
+}
+
+.mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+    vertical-align: middle;
+}
+
+img {
+    max-width: 100%;
+}

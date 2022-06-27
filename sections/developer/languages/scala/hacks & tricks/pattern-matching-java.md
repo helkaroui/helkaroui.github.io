@@ -1,5 +1,5 @@
 ---
-title: Hacks & Tricks
+title: Pattern matching with Java objects 
 ---
 
 ## Pattern matching with Java objects 
