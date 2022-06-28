@@ -109,17 +109,3 @@ Get in touch, and let's talk business!
 # Get in touch 👋
 * Tweet me up, I'm 🐦 [@Stringly_Typed](https://twitter.com/Stringly_Typed)
 * Contact me by mail 📬 [helkarou@gmail.com](mailto:helkarou@gmail.com)
-
-
-
-
-## Certificatons :
-- Akka developer
-- Databricks : data engineer associate
-https://databricks.com/fr/learn/certification/data-engineer-associate
-- Elastic Certified Engineer
-https://www.elastic.co/training/elastic-certified-engineer-exam
-- Google :  Professional Data Engineer 
-https://cloud.google.com/certification/data-engineer
-- Azure Data Engineer Associate
-https://docs.microsoft.com/en-us/learn/certifications/azure-data-engineer/
