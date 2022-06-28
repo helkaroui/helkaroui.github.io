@@ -106,3 +106,53 @@ class Welcome {
 - By default, all members are *public*
 - Use private to restrict access
 - Using protected makes the member only visible within the enclosing entity or subclasses
+
+
+## Companion Object
+```scala
+object Welcome {
+    private val message: String = "Welcome"
+}
+
+class Welcome {
+    def Greet(msg: String = Welcome.message): String = msg
+}
+```
+- When a class and an object having the same name, located in the same file and package, they are called Companion
+- Class can access Companion private members
+- Companion are useful for these use cases :
+  - Having a class utility
+  - Having a class static methods
+  - Constructing a class factory 
+
+## Predef
+- `scala.Predef` is a singleton object
+- It's part of the standard library, it has many useful functions, and needs to be explicitly imported into Scala classes
+- all it's members are imported automatically to any scala script (import scala.Predef._)
+- require method is a member of Predef
+
+## Case classes
+```scala
+case class Person(name: String)
+
+val p1 = Person("John")
+val p2 = Person.apply("Christopher")
+```
+
+- `case` adds several additional features to a class :
+  - create new instance without `new` keyword
+  - each case class has a companion object that has an apply method
+  - compiler creates nice toString, equals and hashCode implementations
+  - class parameters are promoted to immutable fields automatically
+  - copy method is automatically implemented
+  - used in pattern matching
+
+**Why are not all classes case-classes ?**
+- Overhead in bytecode size
+- Can not inherit a case class from another
+  
+*Best Practices*:
+- Value objects are perfect for case classes => data holders
+- Service objects should not be case classes
+
+
