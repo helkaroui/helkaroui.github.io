@@ -2,11 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://helkaroui.github.io/blog</id>
     <title>Sharek.dev Blog</title>
-    <updated>2021-11-10T00:00:00.000Z</updated>
+    <updated>2023-01-12T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://helkaroui.github.io/blog"/>
     <subtitle>Sharek.dev Blog</subtitle>
     <icon>https://helkaroui.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[New year learning plan]]></title>
+        <id>new-year-learning-plan</id>
+        <link href="https://helkaroui.github.io/blog/new-year-learning-plan"/>
+        <updated>2023-01-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[- [ ] Create a k8s cluster]]></summary>
+        <content type="html"><![CDATA[<ul class="contains-task-list containsTaskList_mC6p"><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Create a k8s cluster</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Install Zeppelin / Jupyter</li></ul><h1>Curated list of emerging technoogies</h1><ul class="contains-task-list containsTaskList_mC6p"><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Terraform</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Go language</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Java</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Apache Storm</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Big query</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Airflow</li><li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->MLFlow</li></ul><h1>Curated list of tech articles :</h1><ul class="contains-task-list containsTaskList_mC6p"><li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://dev.to/gbengelebs/netflix-system-design-backend-architecture-10i3" target="_blank" rel="noopener noreferrer">Netflix System Design- Backend Architecture</a></li><li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://dzone.com/articles/load-balancing-pattern" target="_blank" rel="noopener noreferrer">Load Balancing Pattern</a></li><li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://dev.to/pavanbelagatti/devops-trends-for-developers-in-2023-345b" target="_blank" rel="noopener noreferrer">DevOps Trends for Developers in 2023</a></li><li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://austinhenley.com/blog/challengingalgorithms.html" target="_blank" rel="noopener noreferrer">Challenging algorithms and data structures every programmer should try</a></li><li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://fadamakis.com/book-recommendations-for-software-engineers-8b2cba7c6593" target="_blank" rel="noopener noreferrer">Book Recommendations for Software Engineers</a></li><li class="task-list-item"><input type="checkbox" disabled=""> <a href="https://threejs-journey.com/" target="_blank" rel="noopener noreferrer">The Best Way to Learn Three.js</a></li></ul>]]></content>
+        <author>
+            <name>Hamza EL KAROUI</name>
+            <email>helkarou@gmail.com</email>
+            <uri>https://github.com/helkaroui</uri>
+        </author>
+        <category label="new tech" term="new tech"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[How to learn Big data tools online (fast)]]></title>
         <id>fast-learning</id>
