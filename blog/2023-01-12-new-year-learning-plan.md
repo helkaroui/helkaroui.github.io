@@ -27,3 +27,4 @@ tags: [new tech]
 - [ ] [Challenging algorithms and data structures every programmer should try](https://austinhenley.com/blog/challengingalgorithms.html)
 - [ ] [Book Recommendations for Software Engineers](https://fadamakis.com/book-recommendations-for-software-engineers-8b2cba7c6593)
 - [ ] [The Best Way to Learn Three.js](https://threejs-journey.com/)
+- [ ] [Les moyens de paiement electroniques indiens](https://www.lemonde.fr/economie/article/2023/01/10/les-moyens-de-paiement-electroniques-indiens-a-la-conquete-du-monde_6157227_3234.html#xtor=AL-32280270-[default]-[android])
