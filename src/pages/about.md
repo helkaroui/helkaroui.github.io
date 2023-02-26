@@ -3,7 +3,8 @@ title: About
 description: Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.
 ---
 
-![Hamza EL KAROUI](https://avatars.githubusercontent.com/u/22795356?s=96&v=4)
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/22795356?s=96&v=4&fit=cover&mask=circle&maxage=7d
+)
 
 # About me
 Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant at [DataFab.io](https://datafab.io). 
@@ -14,20 +15,20 @@ Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant at [DataF
 <br/>
 
 ### [BNP Parisbas](https://group.bnpparibas/)
-*2021-03 to Present*
-* Developing AML pipelines
+*2021-03 to Present* - **2 Years**
+* Developing AML (Anti Money Laundering) pipelines
 * Optimizing Spark Jobs
 
 
 ### [Kering Group](https://www.kering.com)
-*2019-06 to 2021-02*
+*2019-06 to 2021-02* - **2 Years**
 * Designed a marketing attribution engine
 * Developed Data ingestion pipelines (Spark Batch)
 * Developed large scale streaming applications using Spark Streaming APIs
 
 
 ### [Make.org](https://make.org)
-*2019-01 to 2019-03*
+*2019-01 to 2019-03* - **3 Months**
 * Developed NLP APIs with Akka Http & Akka Cluster
 * Produced targeted analysis.
 
@@ -86,46 +87,8 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 | Go         |     ⭐     |             |          |          |
 | Airflow    |     ⭐     |             |          |          |
 | MLFlow     |     ⭐     |             |          |          |
+| Github Actions |     ⭐     |             |          |          |
 
-
-## Learning Goals
-### 2019
-- Learning Akka framework : Play, Actors, Streaming & Clustering
-- Learning Scala programming language
-- First hands on DDD.
-
-### 2020
-- Mastering Spark/Scala
-- Spark Streaming :)
-- Discovering ZIO
-
-### 2021
-- Mastering Spark optimizations
-- Deep dive into functional programming
-- ML development
-- Ansible
-- learning the following tools & languages :
-  - Kubernetes
-  - Airflow
-  - Kafka
-  - Go
-### 2022
-- Learning:
-  - BigQuery
-  - Airflow
-  - MLFlow
-
-### 2022
-- Learning:
-  - BigQuery
-  - Airflow
-  - MLFlow
-  - Go
-
-- Mastering
-  - Kubernetes
-  - ElasticSearch
-  - Hive
 
 <br/><br/><br/>
 
