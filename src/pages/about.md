@@ -67,6 +67,27 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 
 <br/>
 
+## Technical skills
+
+|            | **Newbie** | **Padawan** | **Jedi** | **Yoda** |
+| ---------- | ---------- | ----------- | -------- | -------- |
+| Scala      |            |             |          | ⭐       |
+| Spark      |            |             |          | ⭐       |
+| Kubernetes |            |             |    ⭐    |          |
+| Nifi       |            |             |    ⭐    |          |
+| Kafka      |            |             |    ⭐    |          |
+| AWS        |            |             |    ⭐    |          |
+| Python     |            |             |    ⭐    |          |
+| Git        |            |             |    ⭐    |          |
+| Java       |            |      ⭐     |          |          |
+| Ansible    |            |      ⭐     |          |          |
+| Jenkins    |            |      ⭐     |          |          |
+| GitlabCI   |            |      ⭐     |          |          |
+| Go         |     ⭐     |             |          |          |
+| Airflow    |     ⭐     |             |          |          |
+| MLFlow     |     ⭐     |             |          |          |
+
+
 ## Learning Goals
 ### 2019
 - Learning Akka framework : Play, Actors, Streaming & Clustering
@@ -78,7 +99,7 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 - Spark Streaming :)
 - Discovering ZIO
 
-### 2021 (Work in progress)
+### 2021
 - Mastering Spark optimizations
 - Deep dive into functional programming
 - ML development
@@ -93,7 +114,14 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
   - BigQuery
   - Airflow
   - MLFlow
+
+### 2022
+- Learning:
+  - BigQuery
+  - Airflow
+  - MLFlow
   - Go
+
 - Mastering
   - Kubernetes
   - ElasticSearch

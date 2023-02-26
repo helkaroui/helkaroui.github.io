@@ -1,0 +1,67 @@
+---
+slug: testing-airflow
+title: Testing Airflow
+authors: [hamza]
+tags: [airflow]
+---
+
+# Tech POC Report
+Apache Airflow is already a commonly used tool for scheduling data pipelines. But the upcoming Airflow 2.0 is going to be a bigger thing as it implements many new features.
+
+## Introduction
+Apache Airflow is an open-source platform to run any type of workflow. And by any we mean…any! Airflow is using the Python programming language to define the pipelines. Users can take full advantage of that by using for loop to define pipelines, executing bash commands, using any external modules like pandas, sklearn or GCP or AWS libraries to manage cloud services and much, much more.
+
+## Objective
+This tutorial provides a step-by-step guide through all crucial concepts of Airflow 2.0 and possible use cases.
+
+### Use cases
+
+Apache Airflow can be used to schedule:
+* ETL pipelines that extract data from multiple sources and run Spark jobs or any other data transformations Training machine learning models
+* Report generation
+* Backups and similar DevOps operations
+
+
+The versatility of Airflow allows you to use it to schedule any type of workflows. Apache Airflow can run ad hoc workloads that are not related to any schedule or interval. However, it works best for pipelines:
+
+- that change slowly
+- related to the time interval
+- scheduled on time
+
+By “changing slowly” we mean that the pipeline, once deployed, is expected to differ from time to time (days/weeks rather than hours or minutes). It is connected to a lack of Airflow pipelines’ versioning. The” related to the time interval” means that the Airflow is best suited for processing data intervals. That’s also why Airflow works best when pipelines are scheduled to run on specific time. Although it is possible to trigger the pipelines manually or using external triggers (for example via REST API).
+
+### Features
+* Advantages
+
+* Disadvantages
+
+## Alternatives
+
+# Technical description
+
+## Principles
+
+## Components
+
+## Architecture
+
+# Test environment
+
+## Git repository
+
+## Setup process
+
+# Gather and document feedback
+
+## Setup considerations
+
+## Encountered difficulties
+
+## Limits & use cases feedback
+
+
+
+
+
+# Resources:
+- [Medium article](https://medium.com/apache-airflow/apache-airflow-2-0-tutorial-41329bbf7211)
