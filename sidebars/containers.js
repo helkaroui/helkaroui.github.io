@@ -15,6 +15,7 @@ module.exports = {
             collapsed: true,
             items: [
                 'kubernetes/quick_start',
+                'kubernetes/cheat_sheet',
                 'kubernetes/storage',
                 'kubernetes/node_affinity'
             ],
