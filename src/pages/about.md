@@ -3,11 +3,13 @@ title: About
 description: Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.
 ---
 
+
+# About me
 ![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/22795356?s=96&v=4&fit=cover&mask=circle&maxage=7d
 )
 
-# About me
-Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant at [DataFab.io](https://datafab.io). 
+
+Hi I'm [Hamza EL KAROUI](https://www.linkedin.com/in/hamza-el-karoui/), a Senior data engineer freelancer, specializing in Apache Spark (incl. Spark SQL and Spark Structured Streaming), Delta Lake, Databricks, and Apache Kafka with brief forays into a wider data engineering space.
 
 <br/><br/>
 
@@ -15,7 +17,7 @@ Hi I'm Hamza EL KAROUI, I'm a data engineer and a full time consultant at [DataF
 <br/>
 
 ### [BNP Parisbas](https://group.bnpparibas/)
-*2021-03 to Present* - **2 Years**
+*2021-03 to 2023-10* - **2 Years 8 months**
 * Developing AML (Anti Money Laundering) pipelines
 * Optimizing Spark Jobs
 
@@ -45,7 +47,7 @@ Engineering School : [IMT Atlantique](https://www.imt-atlantique.fr/en) (ex Tele
 
 ### Master degree in Telecommunications
 *2014-2018*
-Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
+Engineering School : [SupCom](https://www.supcom.tn)
 
 > SupCom is an excellent engineering school in Tunisia
 
@@ -94,7 +96,7 @@ Engineering School : [SupCom](http://http://www.supcom.mincom.tn)
 
 # Work with me ?
 Need some Microservices / Data Pipeline development work done? I'm a full-time Data Engineer consultant, 
-I've been doing this for the past 3 years, and it's my bread and butter! 🍞 <br/>
+I've been doing this for the past 4 years, and it's my bread and butter! 🍞 <br/>
 Get in touch, and let's talk business!
 
 # Get in touch 👋

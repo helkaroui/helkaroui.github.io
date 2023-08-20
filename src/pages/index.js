@@ -24,7 +24,7 @@ export default function Home() {
                                 'button button--outline button--secondary button--lg',
                                 styles.getStarted,
                             )}
-                            to={useBaseUrl('data_processing/spark/quick_start')}>
+                            to={useBaseUrl('data_processing/spark/')}>
                             Explore Spark Internals 📝
                         </Link>
                     </div>
@@ -55,7 +55,7 @@ export default function Home() {
 
                         <div className={clsx(styles.section)}>
                             <h2>Who I'am ?</h2>
-                            <p>Hi 👋🏼, my name is <strong>Hamza EL KAROUI</strong>, proud Tunisian 🇹🇳, data engineer and a full time consultant at <a href="https://datafab.io" target="_blank">DataFab.io</a>.</p>
+                            <p>Hi 👋🏼, my name is <strong>Hamza EL KAROUI</strong>, proud Tunisian 🇹🇳, senior data engineer and freelancer.</p>
                             <Link to={useBaseUrl('about/')} target="_blank">Know more about me ...</Link>
 
                         </div>

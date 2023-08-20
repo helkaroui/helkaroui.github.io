@@ -120,6 +120,23 @@ module.exports = {
                 },
                 {
                     type: 'dropdown',
+                    label: 'Home Lab',
+                    position: 'left',
+                    items: [
+                        {
+                            to: 'home_lab',
+                            activeBasePath: 'home_lab',
+                            label: 'My Home Lab',
+                        },
+                        {
+                            to: 'home_lab/media_center/funkwhale',
+                            activeBasePath: 'home_lab/media_center',
+                            label: 'FunkWhale',
+                        },
+                    ]
+                },
+                {
+                    type: 'dropdown',
                     label: 'Projects',
                     position: 'right',
                     items: [
@@ -240,6 +257,15 @@ module.exports = {
                 path: 'sections/projects/',
                 routeBasePath: 'projects',
                 sidebarPath: require.resolve('./sidebars/projects.js'),
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'home_lab',
+                path: 'sections/home_lab/',
+                routeBasePath: 'home_lab',
+                sidebarPath: require.resolve('./sidebars/home_lab.js'),
             },
         ],
     ]
