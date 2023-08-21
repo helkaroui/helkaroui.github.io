@@ -83,7 +83,7 @@ module.exports = {
                     position: 'left',
                     items: [
                         {
-                            to: 'containers/docker/cheat_sheet',
+                            to: 'containers/docker/quick_start',
                             activeBasePath: 'containers/docker',
                             label: 'Docker',
                         },
