@@ -92,6 +92,11 @@ module.exports = {
                             activeBasePath: 'containers/kubernetes',
                             label: 'Kubernetes',
                         },
+                        {
+                            to: 'containers/podman/quick_start',
+                            activeBasePath: 'containers/podman',
+                            label: 'Podman',
+                        },
                     ]
                 },
 //                {
