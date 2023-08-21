@@ -4,8 +4,30 @@ sidebar_position: 2
 ---
 
 # Introduction
-![](https://wiki.zatoufly.fr/wiki-assets/funkwhale-banner.png)
 
+Funkwhale is an open-source, self-hosted platform for organizing, sharing, and streaming music. It is designed to provide individuals, communities, and organizations with a way to create their own music libraries, playlists, and streaming services, similar to commercial music streaming platforms, but with a focus on privacy, control, and decentralization.
+
+Key features of Funkwhale include:
+
+1. **Self-Hosted Music Server:** Funkwhale allows users to host their own music server, giving them full control over their music collection and how it's accessed.
+
+2. **Music Library Organization:** Users can upload and organize their music collections into albums, artists, and genres, creating a personalized music library.
+
+3. **User Profiles:** Users can create profiles, follow other users, and discover music shared by friends or within a community.
+
+4. **Playlist Creation:** Funkwhale enables users to create and manage playlists, making it easy to curate music for different moods and occasions.
+
+5. **Audio Streaming:** The platform provides streaming capabilities, allowing users to listen to their music collections from anywhere with an internet connection.
+
+6. **Podcasting Support:** Funkwhale also supports podcasting, allowing users to subscribe to and listen to podcasts they're interested in.
+
+7. **Decentralization:** Funkwhale is part of the broader movement toward decentralization and self-hosting. It enables users to have more control over their data and privacy by running their own instance of the platform.
+
+8. **Open Source:** Funkwhale is developed as open-source software, meaning that the source code is freely available for anyone to view, modify, and contribute to.
+
+Funkwhale operates on the principle of "federated" or "federation," which means that multiple instances of Funkwhale can communicate with each other. This allows users on one instance to discover and follow users on other instances, enhancing the social aspect of the platform and fostering a network of interconnected music libraries.
+
+In essence, Funkwhale aims to provide an alternative to commercial music streaming services by giving users the tools to create their own streaming platforms while maintaining control over their data and enjoying a more personalized music experience. It's particularly well-suited for individuals and communities who value privacy, customization, and self-hosting capabilities.
 
 
 
