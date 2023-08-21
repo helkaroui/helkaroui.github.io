@@ -28,6 +28,29 @@ export default function Home() {
                             Explore Spark Internals 📝
                         </Link>
                     </div>
+
+                    <div className={styles.buttons}>
+                        <Link
+                            className={clsx(
+                                'button button--outline button--secondary button--lg',
+                                styles.getStarted,
+                            )}
+                            to={useBaseUrl('developer/languages/scala/quick_start')}>
+                            Explore Scala articles 🚅
+                        </Link>
+                    </div>
+
+                    <div className={styles.buttons}>
+                        <Link
+                            className={clsx(
+                                'button button--outline button--secondary button--lg',
+                                styles.getStarted,
+                            )}
+                            to={useBaseUrl('containers/docker/cheat_sheet')}>
+                            Explore Containers cheat sheets 📦
+                        </Link>
+                    </div>
+
                 </div>
             </header>
             <main>
