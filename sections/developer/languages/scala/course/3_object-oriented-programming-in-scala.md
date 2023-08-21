@@ -1,5 +1,5 @@
 ---
-title: OOP Basics
+title: 3- Object-Oriented Programming in Scala
 ---
 
 

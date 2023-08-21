@@ -9,3 +9,4 @@ Mon TJM dépend du type de projet, de sa complexité, de la durée estimée et d
 
 **Est-ce que votre TJM est négociable?**
 Je suis ouvert à discuter des termes et conditions qui correspondent à vos besoins et à la nature du projet. Mon objectif est de trouver un terrain d'entente qui fonctionne pour les deux parties. Cela dit, il est important de noter que mon tarif reflète mon expérience, mes compétences et la valeur que je peux apporter à votre projet. Je suis disposé à explorer les options et à trouver un arrangement qui soit bénéfique pour nous.
+
