@@ -112,7 +112,7 @@ module.exports = {
                             label: 'Scala',
                         },
                         {
-                            to: 'developer/languages/python/best_practices',
+                            to: 'developer/languages/python/quick_start',
                             activeBasePath: 'developer/languages/python',
                             label: 'Python',
                         },
@@ -125,6 +125,11 @@ module.exports = {
                             to: 'developer/languages/rust/quick_start',
                             activeBasePath: 'developer/languages/rust',
                             label: 'Rust',
+                        },
+                        {
+                            to: 'developer/languages/java/quick_start',
+                            activeBasePath: 'developer/languages/java',
+                            label: 'Java',
                         }
                     ]
                 },
