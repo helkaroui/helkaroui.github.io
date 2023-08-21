@@ -116,6 +116,16 @@ module.exports = {
                             activeBasePath: 'developer/languages/python',
                             label: 'Python',
                         },
+                        {
+                            to: 'developer/languages/go/quick_start',
+                            activeBasePath: 'developer/languages/go',
+                            label: 'Go',
+                        },
+                        {
+                            to: 'developer/languages/rust/quick_start',
+                            activeBasePath: 'developer/languages/rust',
+                            label: 'Rust',
+                        }
                     ]
                 },
                 {
