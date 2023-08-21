@@ -1,36 +1,81 @@
 ---
-title: Quick start
+title: Quick Start Guide to Scala Programming
 ---
 
-In this section you will find interesting notes covering some of the most interesting topics in software engineering. 
-These notes helped me improve my understanding of many concepts and principles all throughout my learning journey. 
-With these notes, you'll find code examples and simple projects used in these notes.
+Scala is a versatile programming language that combines object-oriented and functional programming paradigms. Known for its concise syntax and powerful features, Scala is an excellent choice for a wide range of software development tasks. In this quick start guide, we'll walk you through the essentials of getting started with Scala programming.
 
-The following topics are covered :
-- Functional Programing
-- Actor model
-- Reactive Programing
+## Installation
 
-Feel free to give your feedback.
+Before you begin, you'll need to install Scala on your system. Follow these steps:
 
-## Install SBT
-Sbt stands for Simple Build Tool. It is a simple, flexible and scala native build tool. 
-To download sbt on linux, run the following commands :
-```
-echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
-echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee /etc/apt/sources.list.d/sbt_old.list
-curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
-sudo apt-get update
-sudo apt-get install sbt
-```
+1. **Download Scala:** Visit the official Scala website (https://www.scala-lang.org/download/) and download the latest version of Scala for your operating system.
 
-## Create a "Hello world" project
+2. **Install Scala:** Once downloaded, follow the installation instructions for your operating system. This typically involves running an installer or extracting an archive.
 
-1. Init an empty scala project
-```
-sbt new scala/scala-seed.g8
-```
+3. **Verify Installation:** Open a terminal and type `scala -version` to verify that Scala is installed correctly. You should see the version information displayed.
 
-2. Run `sbt` in the terminal to open the interactive console
+## Hello, Scala!
 
-3. To run the main class, run `run`
+Let's dive right into writing a simple "Hello, World!" program in Scala.
+
+1. **Open a Text Editor:** Open your favorite text editor or integrated development environment (IDE) to write your Scala code.
+
+2. **Write the Code:** Enter the following code:
+
+   ```scala
+   object HelloWorld {
+       def main(args: Array[String]): Unit = {
+           println("Hello, Scala!")
+       }
+   }
+   ```
+
+3. **Save the File:** Save the file with a `.scala` extension, such as `HelloWorld.scala`.
+
+## Compiling and Running
+
+Now that you have your Scala code ready, it's time to compile and run it.
+
+1. **Open a Terminal:** Open a terminal and navigate to the directory where you saved the `HelloWorld.scala` file.
+
+2. **Compile:** Compile the Scala code using the `scalac` compiler:
+
+   ```bash
+   scalac HelloWorld.scala
+   ```
+
+3. **Run:** After compiling, you'll find a `.class` file in the same directory. Run your program using the `scala` command followed by the name of the class without the `.class` extension:
+
+   ```bash
+   scala HelloWorld
+   ```
+
+## Basic Syntax
+
+Here are a few basic Scala syntax elements to get you started:
+
+- **Variable Declaration:** Declare variables using `val` (immutable) or `var` (mutable).
+
+  ```scala
+  val message = "Hello, Scala!"
+  var count = 10
+  ```
+
+- **Functions:** Define functions using the `def` keyword.
+
+  ```scala
+  def greet(name: String): Unit = {
+      println(s"Hello, $name!")
+  }
+  ```
+
+- **String Interpolation:** Embed variables directly in strings using the `s` prefix.
+
+  ```scala
+  val name = "Alice"
+  val greeting = s"Hello, $name!"
+  ```
+
+## Conclusion
+
+Congratulations! You've taken your first steps into the world of Scala programming. This quick start guide introduced you to installing Scala, writing a simple program, and compiling and running it. As you continue your Scala journey, you'll explore its rich features, including pattern matching, functional programming constructs, and advanced libraries. Scala's versatility makes it an excellent choice for various application domains, from web development to data processing and beyond. Happy coding!
