@@ -4,8 +4,6 @@ title: "Query Hints"
 
 In Apache Spark, query hints are annotations or directives provided by users to guide the query optimizer in making decisions about how to execute a particular query. These hints give users more control over the execution plan and can be used to influence the optimization process. Hints can be especially useful when the optimizer's default decisions do not result in the most efficient execution plan for a specific query.
 
-As of my last knowledge update in September 2021, Spark does not provide a built-in query hint mechanism like some traditional relational databases do. However, Spark's Catalyst optimizer, which is responsible for optimizing query execution plans, does have some features that users can use to influence optimization:
-
 1. **Broadcast Join Hints**:
    While not direct hints, Spark's DataFrame API allows users to specify that a certain join operation should use a broadcast join. For example, you can use `.join()` with the `.hint("broadcast")` method chaining to suggest that Spark should use a broadcast join for that specific operation. This can be helpful when you know that one side of the join is small enough to fit in memory on all nodes.
 

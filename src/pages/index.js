@@ -25,7 +25,7 @@ export default function Home() {
                                 styles.getStarted,
                             )}
                             to={useBaseUrl('data_processing/spark/')}>
-                            Explore Spark Internals 📝
+                            Spark Internals 📝
                         </Link>
                     </div>
 
@@ -36,7 +36,7 @@ export default function Home() {
                                 styles.getStarted,
                             )}
                             to={useBaseUrl('developer/languages/scala/quick_start')}>
-                            Explore Scala articles 🚅
+                            Scala articles 🚅
                         </Link>
                     </div>
 
@@ -47,7 +47,7 @@ export default function Home() {
                                 styles.getStarted,
                             )}
                             to={useBaseUrl('containers/docker/cheat_sheet')}>
-                            Explore Containers cheat sheets 📦
+                            Containers cheat sheets 📦
                         </Link>
                     </div>
 
