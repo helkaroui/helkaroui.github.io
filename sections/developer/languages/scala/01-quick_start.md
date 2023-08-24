@@ -8,11 +8,20 @@ Scala is a versatile programming language that combines object-oriented and func
 
 Before you begin, you'll need to install Scala on your system. Follow these steps:
 
-1. **Download Scala:** Visit the official Scala website (https://www.scala-lang.org/download/) and download the latest version of Scala for your operating system.
+1. **Download Scala:** Visit the official Scala website (https://www.scala-lang.org/download/) and follow the installation guide for your operating system.
+To install Scala, it is recommended to use cs setup, the Scala installer powered by Coursier. It installs everything necessary to use the latest Scala release from a command line:
 
-2. **Install Scala:** Once downloaded, follow the installation instructions for your operating system. This typically involves running an installer or extracting an archive.
+```bash
+# For linux users
+curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
+```
+The .profile file is updated but it will not be applied until next reboot of the os. To have the scala available either reboot your os or run the following command :
 
-3. **Verify Installation:** Open a terminal and type `scala -version` to verify that Scala is installed correctly. You should see the version information displayed.
+```bash
+source ~/.profile
+```
+
+2. **Verify Installation:** Open a terminal and type `scala -version` to verify that Scala is installed correctly. You should see the version information displayed.
 
 ## Hello, Scala!
 
@@ -79,3 +88,6 @@ Here are a few basic Scala syntax elements to get you started:
 ## Conclusion
 
 Congratulations! You've taken your first steps into the world of Scala programming. This quick start guide introduced you to installing Scala, writing a simple program, and compiling and running it. As you continue your Scala journey, you'll explore its rich features, including pattern matching, functional programming constructs, and advanced libraries. Scala's versatility makes it an excellent choice for various application domains, from web development to data processing and beyond. Happy coding!
+
+
+**Resources:** [https://github.com/helkaroui/sharek.dev-playbooks](https://github.com/helkaroui/sharek.dev-playbooks/tree/main/developer/languages/scala/1-quick-start)

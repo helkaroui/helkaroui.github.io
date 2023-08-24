@@ -68,3 +68,5 @@ Here are a few basic Python syntax elements to get you started:
 ## Conclusion
 
 Congratulations! You've just embarked on your Python programming journey. This quick start guide covered installing Python, writing a simple program, and running it. Python's intuitive syntax and extensive standard libraries make it an excellent choice for beginners and experienced developers alike. As you delve deeper, you'll explore more advanced topics like loops, conditionals, data structures, and object-oriented programming. Python's versatility and vast ecosystem of libraries make it suitable for a wide range of applications, from web development to scientific computing and beyond. Happy coding!
+
+**Resources:** [https://github.com/helkaroui/sharek.dev-playbooks](https://github.com/helkaroui/sharek.dev-playbooks/tree/main/developer/languages/python/1-quick-start)
