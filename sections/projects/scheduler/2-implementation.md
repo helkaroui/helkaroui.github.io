@@ -1,6 +1,5 @@
 ---
 title: "Implementation"
-sidebar_position: 2
 ---
 
 In this section, I'll explain the technical details of the Scheduler.
