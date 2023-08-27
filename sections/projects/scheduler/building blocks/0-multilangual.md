@@ -62,3 +62,6 @@ Run the Python script. Py4J will handle the communication between the Python scr
 ## Conclusion
 
 Interfacing between multiple programming languages is a powerful technique for creating versatile and efficient applications. With Py4J, bridging the gap between Python and Java becomes remarkably straightforward. By following the example outlined in this article, you can seamlessly integrate Java functionalities into your Python applications, tapping into the strengths of both languages and expanding your programming toolkit. Whether you're building complex scientific applications or enterprise solutions, the ability to interface multiple languages using Py4J opens up a world of possibilities.
+
+**Resources**
+- https://gitlab.in2p3.fr/MaitresNageurs/QuatreNages/MultiLangages
