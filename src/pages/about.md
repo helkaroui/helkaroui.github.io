@@ -94,6 +94,14 @@ Engineering School : [SupCom](https://www.supcom.tn)
 
 <br/><br/><br/>
 
+## Download CV
+To download my cv in :
+- English : [hamza-el-karoui-resume-en.pdf](/static/files/hamza-el-karoui-resume-en.pdf)
+- French :  [hamza-el-karoui-resume-fr.pdf](/static/files/hamza-el-karoui-resume-fr.pdf)
+
+
+<br/><br/><br/>
+
 # Work with me ?
 Need some Microservices / Data Pipeline development work done? I'm a full-time Data Engineer consultant, 
 I've been doing this for the past 4 years, and it's my bread and butter! 🍞 <br/>
