@@ -94,6 +94,10 @@ Engineering School : [SupCom](https://www.supcom.tn)
 
 <br/><br/><br/>
 
+## Certificates
+![avatar](img/certificates/lightbend-scala-language-professional-level-2.1.png)
+![avatar](img/certificates/lightbend-akka-cluster-fundamentals-level-2.png)
+
 ## Download CV
 To download my cv in :
 - English : [hamza-el-karoui-resume-en.pdf](/files/hamza-el-karoui-resume-en.pdf)
