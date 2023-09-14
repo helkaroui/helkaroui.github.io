@@ -1,5 +1,5 @@
 ---
-title: "Spark meets Kuberetes: the complete guide"
+title: "Spark meets Kubernetes: the complete guide"
 ---
 
 ![](img/spark-on-k8s.png)
@@ -102,15 +102,17 @@ Dynamic scaling refers to the ability to automatically adjust the number of Spar
    Dynamic scaling is an iterative process that can occur multiple times during the execution of a Spark application. It allows the application to adapt to changing resource demands, ensuring efficient resource utilization without manual intervention.
 
 
-# Deploying a Spark Application
+# Getting hands dirty
 
 TBD
 
 ## Requirements
+- Kubernetes cluster
+- Docker
+- Skaffold
+- Kustomize
 
-TBD
-
-## Setting up a Skaffold project
+## Setting up a the project
 
 [**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications. 
 
@@ -118,7 +120,16 @@ TBD
 
 ![](img/skaffold-architecture.png)
 
-[**Kustomize**](https://kustomize.io/)
+[**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
+
+
+### The project structure
+
+
+### Minimal working example
+
+
+### Building & Deploying Example
 
 
 ## Kubernetes Components
@@ -129,25 +140,32 @@ TBD
 
 ### Using Pod Template
 
-### 
+### Adding a configmap
+
+### Ingress
+
+### Spark History Server
+
+### UI Proxy
+
 
 ## Deploying the Spark Pi Demo Application
 
 TBD
 
-## Checking the logs
+### Checking the logs
 
 TBD
 
-## Accessing the Spark UI
+### Accessing the Spark UI
 
 TBD
 
-## Spark Job Execution History
+### Spark Job Execution History
 
 TBD
 
-## Monitoring
+### Monitoring
 
 TBD
 
@@ -165,3 +183,8 @@ TBD
 
 # Conclusion
 TBD
+
+
+**Resources:**
+- https://skaffold.dev/
+- https://blog.cellenza.com/en/data/using-spark-with-kubernetes-k8s/
