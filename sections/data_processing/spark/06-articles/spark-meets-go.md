@@ -2,7 +2,7 @@
 title: Spark meets Go Lang
 ---
 
-![](img/spark-go.svg)
+![](img/spark-go.png)
 
 
 **Resources:**

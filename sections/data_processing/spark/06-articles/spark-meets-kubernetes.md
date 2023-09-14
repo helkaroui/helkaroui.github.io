@@ -2,7 +2,7 @@
 title: Spark meets Kuberetes
 ---
 
-![](img/spark-on-k8s.svg)
+![](img/spark-on-k8s.png)
 
 In today's data-driven world, the ability to efficiently process and analyze large datasets is crucial. Apache Spark has been a go-to solution for big data processing, while Kubernetes has emerged as a leading platform for container orchestration. Together, these two technologies form a potent combination, offering a scalable and flexible environment for managing and executing Spark workloads.
 

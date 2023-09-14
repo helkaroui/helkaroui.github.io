@@ -20,7 +20,7 @@ Spark plugin framework allows user to run arbitrary listeners on driver or execu
 
 
 ## Internals :
-To understand the internals Plugin Framework, see this [article](./../02-internals/plugin-framework.md)
+To understand the internals Plugin Framework, see this [article](./../03-internals/plugin-framework.md)
 
 ### Simple Plugin
 TBC
