@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 Apache Spark is an open-source distributed computing framework designed for processing and analyzing large-scale datasets in a fast and efficient manner. It was developed at the AMPLab at UC Berkeley and later donated to the Apache Software Foundation, where it became an Apache project. Spark is designed to provide a unified platform for various data processing tasks, including batch processing, real-time stream processing, machine learning, and interactive query analysis.
