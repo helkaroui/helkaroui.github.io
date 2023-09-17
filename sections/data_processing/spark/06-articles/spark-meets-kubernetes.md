@@ -8,10 +8,10 @@ In today's data-driven world, the ability to efficiently process and analyze lar
 
 In this context, we want to share our take aways from migrating old Spark Standalone clusters to kubernetes using Spark Submit.
 
-# Project context
+## Project context
 The client's infrastructure is build on top of OpenStack, thus most of services are installed manually or using Ansible, on top of virtual machines. With these constraints, the big data team has build multiple Spark Standalone clusters for each of their environments.
 
-# Migration Goals & Constraints
+## Migration Goals & Constraints
 
 **Constraints** 
 
@@ -46,19 +46,19 @@ Kubernetes abstracts away many of the complexities associated with managing Spar
 
 Kubernetes' bin-packing capabilities ensure efficient use of cluster resources. Spark pods are scheduled on worker nodes with available resources, minimizing wastage.
 
-# Getting Started with Spark on Kubernetes
+## Getting Started with Spark on Kubernetes
 
 TBD
 
-## Architecture
+### Architecture
 
 TBD
 
-## How Spark Works on Kubernetes
+### How Spark Works on Kubernetes
 
 TBD
 
-## Spark-Submit vs Spark Operator
+### Spark-Submit vs Spark Operator
 `spark-submit` and the Spark Operator are two different approaches for running Apache Spark applications on Kubernetes. Each has its own advantages and use cases, and the choice between them depends on your specific requirements and infrastructure setup.
 
 * Use spark-submit when:
@@ -73,7 +73,7 @@ TBD
   * You are using Kubernetes extensively in your infrastructure.
 
 
-## Dynamic Scaling
+### Dynamic Scaling
 
 Dynamic scaling refers to the ability to automatically adjust the number of Spark executors in response to workload demands. This feature allows applications to efficiently utilize cluster resources while maintaining optimal performance.
 
@@ -106,17 +106,17 @@ Dynamic scaling refers to the ability to automatically adjust the number of Spar
    Dynamic scaling is an iterative process that can occur multiple times during the execution of a Spark application. It allows the application to adapt to changing resource demands, ensuring efficient resource utilization without manual intervention.
 
 
-# Getting hands dirty
+## Getting hands dirty
 
 TBD
 
-## Requirements
+### Requirements
 - Kubernetes cluster / Minikube
 - Docker
 - Skaffold
 - Kustomize
 
-## Setting up a the project
+### Setting up a the project
 
 [**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications. 
 
@@ -126,7 +126,7 @@ TBD
 
 [**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
 
-### 1- The project structure
+#### 1- The project structure
 
 We will start by creating a project with a structure that emphasis the separation of rules, i.e. we seperate the code base, the service component and the environment specifics on which the application will run. This concept is also called `Environment-Agnostic Design` also known as `environment-agnostic architecture` or `platform-agnostic design`.
 
@@ -158,7 +158,7 @@ In that sperit, here is our project structure :
 - **Deployment :** this folder holds resources and variants of environment configurations - like `development`, `staging` and `production` - using overlays that modify a common base.
 
 
-### 2- Spark Base Image
+#### 2- Spark Base Image
 
 We decided to create a custom spark docker image rather than using the provided docker image, in order to showcase the possibility of customizing Spark upon the project needs.
 
@@ -211,7 +211,7 @@ USER ${spark_uid}
 ```
 
 
-### 3- Spark App Example Image
+#### 3- Spark App Example Image
 
 To showcase a fully working spark application, we create a basic Scala/Spark application with two scripts :
 - *Compute Pi* this script will compute an approximation to PI and log the result. The code is also found within [Spark-Examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) module.
@@ -256,61 +256,61 @@ Because there is no Scala 3 version of spark-sql available, we use CrossVersion 
 
 
 
-### Minimal working example
+#### Minimal working example
 
 
-### Building & Deploying Example
+#### Building & Deploying Example
 
 
-## Kubernetes Components
+### Kubernetes Components
 
-### Spark Submit Image
+#### Spark Submit Image
 
-### Spark Submit Service
+#### Spark Submit Service
 
-### Using Pod Template
+#### Using Pod Template
 
-### Adding a configmap
+#### Adding a configmap
 
-### Ingress
+#### Ingress
 
-### Spark History Server
+#### Spark History Server
 
-### UI Proxy
+#### UI Proxy
 
 
-## Deploying the Spark Pi Demo Application
-
-TBD
-
-### Checking the logs
+### Deploying the Spark Pi Demo Application
 
 TBD
 
-### Accessing the Spark UI
+#### Checking the logs
 
 TBD
 
-### Spark Job Execution History
+#### Accessing the Spark UI
 
 TBD
 
-### Monitoring
+#### Spark Job Execution History
+
+TBD
+
+#### Monitoring
 
 TBD
 
 
-## Continuous Development
+### Continuous Development
 
 TBD 
 
-### Hot reloading
+#### Hot reloading
 
 TBD
 
 
 
-# Pros and Cons of Spark Submit with K8s
+## Pros and Cons of Spark Submit with K8s
 
 TBD
 
@@ -322,7 +322,7 @@ TBD
 * ...
 * ...
 
-# Conclusion
+## Conclusion
 
 TBD
 
