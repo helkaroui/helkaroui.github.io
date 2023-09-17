@@ -115,6 +115,7 @@ TBD
 - Docker
 - Skaffold
 - Kustomize
+- sbt
 
 ### Setting up a the project
 
@@ -214,7 +215,7 @@ USER ${spark_uid}
 #### 3- Spark App Example Image
 
 To showcase a fully working spark application, we create a basic Scala/Spark application with two scripts :
-- *Compute Pi* this script will compute an approximation to PI and log the result. The code is also found within [Spark-Examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) module.
+- *Compute Pi* this script will compute an approximation to PI and log the result. The code is also included in [Spark-Examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) module.
 - *Streaming Example* A basic streaming script with Spark structured streaming.
 
 We first start by creating an SBT project as follow :
@@ -243,7 +244,8 @@ We first start by creating an SBT project as follow :
 5- Adding a dependency in the `build.sbt` file :
 ```sbt
 libraryDependencies ++= Seq(
-  ("org.apache.spark" %% "spark-sql" % "3.5.0" % "provided").cross(CrossVersion.for3Use2_13)
+      "org.apache.spark" %% "spark-sql" % "3.5.0" % Provided cross CrossVersion.for3Use2_13,
+      "org.apache.spark" %% "spark-streaming" % "3.5.0" % Provided cross CrossVersion.for3Use2_13
 )
 ```
 
@@ -254,6 +256,83 @@ Because there is no Scala 3 version of spark-sql available, we use CrossVersion 
 :::
 
 
+6- Add `sbt-assembly` plugin under `project/plugins.sbt` :
+```scala
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.1")
+```
+
+7- Create the scala script `SparkPi` under package `dev.sharek.examples` :
+```scala
+package dev.sharek.examples
+
+import org.apache.spark.sql.SparkSession
+
+import scala.math.random
+
+class SparkPi(args: Array[String]) {
+
+  val spark = SparkSession
+    .builder
+    .appName("Spark Pi")
+    .getOrCreate()
+
+  SparkPiLogic(spark, args)
+
+  spark.stop()
+}
+
+
+class SparkPiLogic(spark: SparkSession, args: Array[String]) {
+
+  val slices = if (args.length > 0) args(0).toInt else 2
+  val numSecondsToSleep = if (args.length > 1) args(1).toInt else 10
+
+
+  val n = math.min(100000L * slices, Int.MaxValue).toInt // avoid overflow
+  val count = spark.sparkContext.parallelize(1 until n, slices).map { i =>
+    val x = random * 2 - 1
+    val y = random * 2 - 1
+    if (x * x + y * y <= 1) 1 else 0
+  }.reduce(_ + _)
+
+  println(s"Pi is roughly ${4.0 * count / (n - 1)}")
+
+
+  for (i <- 1 until numSecondsToSleep) {
+    println(s"Alive for $i out of $numSecondsToSleep seconds")
+    Thread.sleep(1000)
+  }
+
+}
+```
+
+
+8- Finaly, we add the Dockerfile that builds the sbt project into jar files:
+
+```docker
+FROM sbtscala/scala-sbt:eclipse-temurin-jammy-8u382-b05_1.9.6_3.3.1
+
+ENV SRC_DIR=/opt/source
+ENV APP_DIR=/opt/spark-app-example
+
+
+RUN mkdir -p $SRC_DIR \
+    && mkdir -p $APP_DIR
+
+COPY . $SRC_DIR
+
+RUN cd $SRC_DIR \
+    && sbt assembly \
+    && cp target/scala-3.3.1/spark-app-example.jar $APP_DIR/
+
+WORKDIR $APP_DIR
+```
+
+:::note
+
+At this point, we can test everything by building the docker image `docker build .`
+
+:::
 
 
 #### Minimal working example
