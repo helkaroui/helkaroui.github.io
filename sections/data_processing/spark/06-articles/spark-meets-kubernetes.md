@@ -50,6 +50,10 @@ Kubernetes' bin-packing capabilities ensure efficient use of cluster resources. 
 
 TBD
 
+## Architecture
+
+TBD
+
 ## How Spark Works on Kubernetes
 
 TBD
@@ -107,7 +111,7 @@ Dynamic scaling refers to the ability to automatically adjust the number of Spar
 TBD
 
 ## Requirements
-- Kubernetes cluster
+- Kubernetes cluster / Minikube
 - Docker
 - Skaffold
 - Kustomize
@@ -116,14 +120,140 @@ TBD
 
 [**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications. 
 
-
-
 ![](img/skaffold-architecture.png)
 
 [**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
 
+[**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
 
-### The project structure
+### 1- The project structure
+
+We will start by creating a project with a structure that emphasis the separation of rules, i.e. we seperate the code base, the service component and the environment specifics on which the application will run. This concept is also called `Environment-Agnostic Design` also known as `environment-agnostic architecture` or `platform-agnostic design`.
+
+In that sperit, here is our project structure :
+
+```
+├── images
+│   ├── base-images
+│   │   └── spark-base-image
+│   └── custom-images
+│       └── spark-app-example
+├── services
+│   ├── sparkhs
+│   ├── spark-job-example
+│   └── spark-reverse-proxy
+└── deployment
+    ├── base
+    └── overlays
+        ├── dev
+        └── prod
+```
+
+- **images :** The docker images folder is where lives our code base, it can also be split into two folders :
+  - *base-images* for base docker that will be used to build other images. Example : spark, jdk, python, sbt, gradle.
+  - *custom-images* which can enhirit from base images, and holds images with our code base.
+
+- **services :** Here we define the services that will run our docker images on kubernetes.
+
+- **Deployment :** this folder holds resources and variants of environment configurations - like `development`, `staging` and `production` - using overlays that modify a common base.
+
+
+### 2- Spark Base Image
+
+We decided to create a custom spark docker image rather than using the provided docker image, in order to showcase the possibility of customizing Spark upon the project needs.
+
+
+The easiest way is to mimic the Dockerfile located in Spark [Repository](https://github.com/apache/spark/blob/master/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/Dockerfile)
+
+
+We reduce the dockerfile to it's minimum and we add a stage to build spark from source using maven.
+
+
+```Dockerfile
+FROM maven:3.9.4-eclipse-temurin AS BUILD
+
+TBD
+
+
+FROM eclipse-temurin:17-jre as RUNTIME
+
+ARG spark_uid=185
+
+RUN set -ex && \
+    apt-get update && \
+    ln -s /lib /lib64 && \
+    apt install -y bash tini && \
+    mkdir -p /opt/spark && \
+    mkdir -p /opt/spark/examples && \
+    mkdir -p /opt/spark/work-dir && \
+    touch /opt/spark/RELEASE && \
+    rm /bin/sh && \
+    ln -sv /bin/bash /bin/sh && \
+    echo "auth required pam_wheel.so use_uid" >> /etc/pam.d/su && \
+    chgrp root /etc/passwd && chmod ug+rw /etc/passwd && \
+    rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/*
+
+
+COPY entrypoint.sh /opt/
+COPY decom.sh /opt/
+
+ENV SPARK_HOME /opt/spark
+
+WORKDIR /opt/spark/work-dir
+RUN chmod g+w /opt/spark/work-dir \
+      && chmod a+x /opt/decom.sh
+
+ENTRYPOINT [ "/opt/entrypoint.sh" ]
+
+# Specify the User that the actual main process will run as
+USER ${spark_uid}
+
+```
+
+
+### 3- Spark App Example Image
+
+To showcase a fully working spark application, we create a basic Scala/Spark application with two scripts :
+- *Compute Pi* this script will compute an approximation to PI and log the result. The code is also found within [Spark-Examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) module.
+- *Streaming Example* A basic streaming script with Spark structured streaming.
+
+We first start by creating an SBT project as follow :
+
+1- `cd` to the folder `images/custom-images/`.
+
+2- Run the following command `sbt new scala/scala3.g8`. This pulls the ‘scala3’ template from GitHub. It will also create a target folder, which you can ignore.
+
+3- When prompted, name the application `spark-app-example`. This will create a project called “spark-app-example”.
+
+4- Let’s take a look at what just got generated:
+```
+├── build.sbt
+├── project
+│   └── build.properties
+├── README.md
+└── src
+    ├── main
+    │   └── scala
+    │       └── Main.scala
+    └── test
+        └── scala
+            └── MySuite.scala
+```
+
+5- Adding a dependency in the `build.sbt` file :
+```sbt
+libraryDependencies ++= Seq(
+  ("org.apache.spark" %% "spark-sql" % "3.5.0" % "provided").cross(CrossVersion.for3Use2_13)
+)
+```
+
+:::note
+
+Because there is no Scala 3 version of spark-sql available, we use CrossVersion for3Use2_13 to tell sbt we want the Scala 2.13 version of this library
+
+:::
+
+
 
 
 ### Minimal working example
@@ -169,6 +299,17 @@ TBD
 
 TBD
 
+
+## Continuous Development
+
+TBD 
+
+### Hot reloading
+
+TBD
+
+
+
 # Pros and Cons of Spark Submit with K8s
 
 TBD
@@ -182,9 +323,12 @@ TBD
 * ...
 
 # Conclusion
+
 TBD
 
 
 **Resources:**
 - https://skaffold.dev/
 - https://blog.cellenza.com/en/data/using-spark-with-kubernetes-k8s/
+- https://devopscube.com/kustomize-tutorial/
+- [Using Scala 3 with Spark](https://xebia.com/blog/using-scala-3-with-spark/)
