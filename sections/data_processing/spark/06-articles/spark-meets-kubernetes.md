@@ -125,7 +125,19 @@ TBD
 
 [**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
 
-[**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
+[**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.kube
+
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+[**kubectl**]()
+```bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+```
+
 
 #### 1- The project structure
 
@@ -159,7 +171,10 @@ In that sperit, here is our project structure :
 - **Deployment :** this folder holds resources and variants of environment configurations - like `development`, `staging` and `production` - using overlays that modify a common base.
 
 
-#### 2- Spark Base Image
+
+### Building docker images
+
+#### 1- Spark Base Image
 
 We decided to create a custom spark docker image rather than using the provided docker image, in order to showcase the possibility of customizing Spark upon the project needs.
 
@@ -211,8 +226,14 @@ USER ${spark_uid}
 
 ```
 
+:::note
 
-#### 3- Spark App Example Image
+At this point, we can test everything by building the docker image `docker build .`
+
+:::
+
+
+#### 2- Spark App Example Image
 
 To showcase a fully working spark application, we create a basic Scala/Spark application with two scripts :
 - *Compute Pi* this script will compute an approximation to PI and log the result. The code is also included in [Spark-Examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) module.
@@ -360,7 +381,18 @@ At this point, we can test everything by building the docker image `docker build
 
 ### Deploying the Spark Pi Demo Application
 
-TBD
+starting Minikube:
+
+```bash
+minikube start
+```
+
+```bash
+kubectl get nodes
+```
+
+
+
 
 #### Checking the logs
 
@@ -411,3 +443,7 @@ TBD
 - https://blog.cellenza.com/en/data/using-spark-with-kubernetes-k8s/
 - https://devopscube.com/kustomize-tutorial/
 - [Using Scala 3 with Spark](https://xebia.com/blog/using-scala-3-with-spark/)
+- Install Minikube: https://minikube.sigs.k8s.io/docs/start/
+- Install kubectl https://kubernetes.io/docs/tasks/tools/
+- Setup Airflow on k8s : https://www.bhavaniravi.com/apache-airflow/deploying-airflow-on-kubernetes
+- Airflow Dag: https://www.projectpro.io/recipes/use-sparksubmitoperator-airflow-dag
