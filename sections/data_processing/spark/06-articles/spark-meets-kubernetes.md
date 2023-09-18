@@ -111,34 +111,117 @@ Dynamic scaling refers to the ability to automatically adjust the number of Spar
 TBD
 
 ### Requirements
-- Kubernetes cluster / Minikube
+In this project we will need to setup the following tools :
 - Docker
+- Kubernetes cluster / Minikube
+- kubectl
 - Skaffold
 - Kustomize
-- sbt
+- sbt (optional)
 
-### Setting up a the project
+[**Docker**](https://docs.docker.com/engine/install/)
 
-[**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications. 
+Set up Docker's Apt repository:
+```bash
+sudo apt-get update \
+&& sudo apt-get install ca-certificates curl gnupg \
+&& sudo install -m 0755 -d /etc/apt/keyrings \
+&& curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
+&& sudo chmod a+r /etc/apt/keyrings/docker.gpg \
+&& echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
+&& sudo apt-get update
+```
 
-![](img/skaffold-architecture.png)
+To install the latest version, run:
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 
-[**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
+Now add your user to the Docker group:
+```bash
+sudo usermod -aG docker $USER && newgrp docker
+```
+
+Verify that the Docker Engine installation is successful by running the hello-world image.
+```bash
+sudo docker run hello-world
+```
 
 [**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.kube
 
+To install the latest version, run:
 ```bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+```
+Verify that the Minikube installation is successful by starting it:
+```bash
+minikube start
+```
+
+You can check the available node by running:
+```bash
+minikube kubectl get nodes
+```
+
+And you can access the Dashboard with this command, the Dashboard will be launched at [http://127.0.0.1:41169](http://127.0.0.1:41169)
+```bash
+minikube dashboard
 ```
 
 [**kubectl**]()
+For kubectl, we can either install it, or create an alias to `minikube kubectl`.
+
+*Method 1*: Install kubectl
 ```bash
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+&& sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
+&& rm kubectl
+```
+
+*Method 2:* For simplicity, we will add an alias to our .bashrc file and apply it:
+```bash
+vim ~/.bashrc
+
+# Add this line at the end
+alias kubectl=minikube kubectl
+# Save and apply the file
+
+source ~/.bashrc
 ```
 
 
+[**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications.
+![](img/skaffold-architecture.png)
+
+To install :
+```bash
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 \
+&& sudo install skaffold /usr/local/bin/ \
+&& rm skaffold
+```
+
+Verify setup:
+```bash
+skaffold version
+```
+
+[**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
+
+To install :
+```bash
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash \
+&& sudo install kustomize /usr/local/bin/ \
+&& rm kustomize
+```
+
+Verify setup:
+```bash
+kustomize version
+```
+
+### Setting up a the project
 #### 1- The project structure
 
 We will start by creating a project with a structure that emphasis the separation of rules, i.e. we seperate the code base, the service component and the environment specifics on which the application will run. This concept is also called `Environment-Agnostic Design` also known as `environment-agnostic architecture` or `platform-agnostic design`.
