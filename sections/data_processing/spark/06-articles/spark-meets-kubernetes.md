@@ -171,7 +171,7 @@ And you can access the Dashboard with this command, the Dashboard will be launch
 minikube dashboard
 ```
 
-[**kubectl**]()
+[**kubectl**](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/)
 For kubectl, we can either install it, or create an alias to `minikube kubectl`.
 
 *Method 1*: Install kubectl
