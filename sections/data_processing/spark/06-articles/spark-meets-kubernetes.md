@@ -165,7 +165,8 @@ You can check the available node by running:
 minikube kubectl get nodes
 ```
 
-And you can access the Dashboard with this command, the Dashboard will be launched at [http://127.0.0.1:41169](http://127.0.0.1:41169)
+And you can access the Dashboard with this command, the Dashboard will be launched at [localhost:41169](http://localhost:41169)
+
 ```bash
 minikube dashboard
 ```
