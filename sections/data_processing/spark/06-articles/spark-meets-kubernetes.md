@@ -1,6 +1,15 @@
 ---
 title: "Spark meets Kubernetes: the complete guide"
+
+toc_min_heading_level: 2
+toc_max_heading_level: 5
 ---
+
+:::warning
+
+This article is still in review 🚧 by the co-authors.
+
+:::
 
 ![](img/spark-on-k8s.png)
 
