@@ -1,0 +1,10 @@
+---
+title: "SQL Next Gen: Orchestrate dbt with Dagster and Spark"
+---
+
+
+resources:
+- https://github.com/dagster-io/dagster/tree/master/examples/assets_dbt_python/dbt_project
+- https://dagster.io/templates
+- https://spark.apache.org/docs/latest/spark-connect-overview.html
+- https://www.reddit.com/r/apachespark/comments/14bp1ub/spark_connect_on_kubernetes/    

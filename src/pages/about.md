@@ -1,6 +1,6 @@
 ---
 title: About
-description: Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.
+description: Hamza EL KAROUI is a data engineer and devops, specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.
 ---
 
 
@@ -9,7 +9,7 @@ description: Hamza EL KAROUI is a data engineer specializing in Apache Spark, De
 )
 
 
-Hi I'm [Hamza EL KAROUI](https://www.linkedin.com/in/hamza-el-karoui/), a Senior data engineer freelancer, specializing in Apache Spark (incl. Spark SQL and Spark Structured Streaming), Delta Lake, Databricks, and Apache Kafka with brief forays into a wider data engineering space.
+Hi I'm [Hamza EL KAROUI](https://www.linkedin.com/in/hamza-el-karoui/), a Senior data engineer / DevOps freelancer, specializing in Apache Spark (incl. Spark SQL and Spark Structured Streaming), Delta Lake, Databricks, and Apache Kafka with brief forays into a wider data engineering space.
 
 <br/><br/>
 
@@ -18,21 +18,30 @@ Hi I'm [Hamza EL KAROUI](https://www.linkedin.com/in/hamza-el-karoui/), a Senior
 
 ### [BNP Parisbas](https://group.bnpparibas/)
 *2021-03 to 2023-10* - **2 Years 8 months**
-* Developing AML (Anti Money Laundering) pipelines
-* Optimizing Spark Jobs
+- Taking ownership of building data solutions to provide actionable insights into key
+business metrics.
+- Tuning Spark jobs performance, optimizing the code and solving data skew issues.
+- Developed ML inference job using Spark + Deep Java Library + PyTorch.
+- Migrating scheduling from legacy systems to Airflow.
 
+*KEYWORDS: SCALA/SPARK, KUBERNETES, SKAFFOLD, KUSTOMIZE, AIRFLOW.*
 
 ### [Kering Group](https://www.kering.com)
 *2019-06 to 2021-02* - **2 Years**
-* Designed a marketing attribution engine
-* Developed Data ingestion pipelines (Spark Batch)
-* Developed large scale streaming applications using Spark Streaming APIs
+- Designing, developing and maintaining a world-class, high-performing data pipelines to enhance the business insights using Spark 2.4 running on AWS EMR.
+- Developed Spark Streaming applications integrated with Kafka as broker & Cassandra for data consolidation.
+- Designed a multi-channel marketing attribution engine to replace old batch jobs
+  - Reduced compute time and used resources (from 7h30 with 1TB ram to 30 min with only 20GB).
+  - Migrated Spark/SQL jobs to AWS Athena  Glue  Lambda function for data source refresh
 
+*KEYWORDS: SCALA/SPARK, PYSPARK, PYTHON, AWS, ATHENA, DELTALAKE, NIFI*
 
 ### [Make.org](https://make.org)
 *2019-01 to 2019-03* - **3 Months**
-* Developed NLP APIs with Akka Http & Akka Cluster
-* Produced targeted analysis.
+- Developed an inference API using Akka Http & Actors to serve NLP models saved in PMML format.
+- Anomaly detection based on access logs and tracking data using PySpark.
+
+*KEYWORDS: AKKA, KAFKA, PYSPARK, PANDAS, DOCKER, GITLAB CI*
 
 <br/><br/><br/>
 
@@ -75,19 +84,20 @@ Engineering School : [SupCom](https://www.supcom.tn)
 |            | **Newbie** | **Padawan** | **Jedi** | **Yoda** |
 | ---------- | ---------- | ----------- | -------- | -------- |
 | Scala      |            |             |          | ⭐       |
+| SQL        |            |             |          | ⭐       |
 | Spark      |            |             |          | ⭐       |
+| Python     |            |             |          |   ⭐       |
 | Kubernetes |            |             |    ⭐    |          |
 | Nifi       |            |             |    ⭐    |          |
 | Kafka      |            |             |    ⭐    |          |
 | AWS        |            |             |    ⭐    |          |
-| Python     |            |             |    ⭐    |          |
 | Git        |            |             |    ⭐    |          |
+| Airflow    |            |             |    ⭐     |          |
 | Java       |            |      ⭐     |          |          |
 | Ansible    |            |      ⭐     |          |          |
 | Jenkins    |            |      ⭐     |          |          |
 | GitlabCI   |            |      ⭐     |          |          |
 | Go         |     ⭐     |             |          |          |
-| Airflow    |     ⭐     |             |          |          |
 | MLFlow     |     ⭐     |             |          |          |
 | Github Actions |     ⭐     |             |          |          |
 
@@ -96,9 +106,9 @@ Engineering School : [SupCom](https://www.supcom.tn)
 
 ## Certificates
 
-![cert1](../../static/img/certifcates/lightbend-scala-language-professional-level-2.1.png)
+<img width="150" src="../../static/img/certifcates/lightbend-scala-language-professional-level-2.1.png"/>
+<img width="150" src="../../static/img/certifcates/lightbend-akka-cluster-fundamentals-level-2.png"/>
 
-![cert2](../../static/img/certifcates/lightbend-akka-cluster-fundamentals-level-2.png)
 
 ## Download CV
 To download my cv in :
@@ -110,7 +120,7 @@ To download my cv in :
 
 # Work with me ?
 Need some Microservices / Data Pipeline development work done? I'm a full-time Data Engineer consultant, 
-I've been doing this for the past 4 years, and it's my bread and butter! 🍞 <br/>
+I've been doing this for the past 5.5 years, and it's my bread and butter! 🍞 <br/>
 Get in touch, and let's talk business!
 
 # Get in touch 👋
