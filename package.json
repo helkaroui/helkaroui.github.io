@@ -1,6 +1,6 @@
 {
   "name": "sharek-dev",
-  "version": "0.1.0",
+  "version": "1.22.19",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
