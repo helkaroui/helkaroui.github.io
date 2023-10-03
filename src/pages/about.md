@@ -106,8 +106,8 @@ Engineering School : [SupCom](https://www.supcom.tn)
 
 ## Certificates
 
-<img width="150" src="../../static/img/certifcates/lightbend-scala-language-professional-level-2.1.png"/>
-<img width="150" src="../../static/img/certifcates/lightbend-akka-cluster-fundamentals-level-2.png"/>
+<img width="150" src={require('../../static/img/certifcates/lightbend-scala-language-professional-level-2.1.png').default} />
+<img width="150" src={require('../../static/img/certifcates/lightbend-akka-cluster-fundamentals-level-2.png').default} />
 
 
 ## Download CV

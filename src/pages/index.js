@@ -14,10 +14,11 @@ export default function Home() {
         <Layout
             title={`My Geek Cookbook`}
             description="Hamza EL KAROUI is a data engineer specializing in Apache Spark, Delta Lake, Apache Kafka (with brief forays into a wider data engineering space.">
-            <header className={clsx('hero hero--primary', styles.heroBanner)}>
+            <header className={clsx('hero hero--primary')}>
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>
                     <p className="hero__subtitle">{siteConfig.tagline}</p>
+
                     <div className={styles.buttons}>
                         <Link
                             className={clsx(
