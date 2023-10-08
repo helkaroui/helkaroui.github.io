@@ -6,11 +6,18 @@ toc_max_heading_level: 5
 ---
 
 import Collapse from '@site/src/components/collapse';
+import Badge from '@site/src/components/badge';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CollapseGithubCodeBlock} from '@site/src/components/github-codeblock';
 
+import Author from '@theme/BlogPostItem/Header/Author';
 
+
+<Author author={{name: "Hamza EL KAROUI", title: "Freelance, Senior Data Engineer / DevOps", url: "/about", imageURL: "https://images.weserv.nl/?url=avatars.githubusercontent.com/u/22795356?s=96&v=4&fit=cover&mask=circle&maxage=7d", email: "dd"}} />
+
+
+<br/>
 
 :::warning
 
@@ -163,7 +170,7 @@ For more details about Airflow, check the [officiel website](https://airflow.apa
 
 ## Getting Started
 
-I recommand you to download the project source code from my Github Repo [helkaroui/spark-on-k8s](https://github.com/helkaroui/spark-on-k8s), and try to follow the following steps. It will help you to understand the different sections by stadying the code.
+I recommand you to download the project source code from my Github Repo <Badge color="rgb(168, 255, 236)"> [helkaroui/spark-on-k8s](https://github.com/helkaroui/spark-on-k8s) </Badge>  , and try to follow the following steps. It will help you to understand the different sections by stadying the code.
 
 ### Requirements
 In this project we will need to setup the following tools :
@@ -327,7 +334,7 @@ In that sperit, here is our project structure :
 │       └── spark-app-example
 ├── services
 │   ├── sparkhs
-│   ├── spark-job-example
+│   ├── spark-submit-job
 │   └── spark-reverse-proxy
 └── deployment
     ├── base
@@ -357,7 +364,7 @@ The easiest way is to mimic the Dockerfile located in Spark [Repository](https:/
 
 We reduce the dockerfile to it's minimum and we add a stage to build spark from source using maven.
 
-<CollapseGithubCodeBlock title="images/base-images/spark-base-image/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/base-images/spark-base-image/Dockerfile" language="docker"/>
+<CollapseGithubCodeBlock title="images/base-images/spark-base-image/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/images/base-images/spark-base-image/Dockerfile" language="docker"/>
 
 
 :::note
@@ -399,18 +406,18 @@ We first start by creating an SBT project as follow :
 ```
 
 5- Adding a dependency in the `build.sbt` file :
-<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/build.sbt" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/build.sbt" language="scala"/>
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/build.sbt" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/images/custom-images/spark-app-example/build.sbt" language="scala"/>
 
 
 6- Add `sbt-assembly` plugin under `project/plugins.sbt` :
-<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/project/plugins.sbt" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/project/plugins.sbt" language="scala"/>
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/project/plugins.sbt" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/images/custom-images/spark-app-example/project/plugins.sbt" language="scala"/>
 
 7- Create the scala script `SparkPi` under package `dev.sharek.examples` :
-<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/src/main/scala/dev/sharek/examples/SparkPi.scala" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/src/main/scala/dev/sharek/examples/SparkPi.scala" language="scala"/>
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/src/main/scala/dev/sharek/examples/SparkPi.scala" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/images/custom-images/spark-app-example/src/main/scala/dev/sharek/examples/SparkPi.scala" language="scala"/>
 
 
 8- Finaly, we add the Dockerfile that builds the sbt project into jar files:
-<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/Dockerfile" language="docker"/>
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/images/custom-images/spark-app-example/Dockerfile" language="docker"/>
 
 :::note
 
@@ -427,17 +434,17 @@ We choosed S3, as it is widely used in big data projects.
 #### S3 Service
 
 The docker file:
-<CollapseGithubCodeBlock title="services/s3/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/s3/Dockerfile" language="docker"/>
+<CollapseGithubCodeBlock title="services/s3/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/services/s3/Dockerfile" language="docker"/>
 
 
 #### Spark Submit Service
 
-<CollapseGithubCodeBlock title="services/spark-app-example/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-app-example/Dockerfile" language="docker"/>
+<CollapseGithubCodeBlock title="services/spark-submit-job/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/services/spark-submit-job/Dockerfile" language="docker"/>
 
 
-<CollapseGithubCodeBlock title="services/spark-app-example/entrypoint.sh" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-app-example/entrypoint.sh" language="bash"/>
+<CollapseGithubCodeBlock title="services/spark-submit-job/entrypoint.sh" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/services/spark-submit-job/entrypoint.sh" language="bash"/>
 
-<CollapseGithubCodeBlock title="services/spark-app-example/job.yaml" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-app-example/job.yaml" language="yaml"/>
+<CollapseGithubCodeBlock title="services/spark-submit-job/job.yaml" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/services/spark-submit-job/job.yaml" language="yaml"/>
 
 
 #### Deploying the Spark Pi Demo Application
@@ -452,7 +459,7 @@ minikube start
 kubectl get nodes
 ```
 
-<CollapseGithubCodeBlock title="Makefile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/Makefile" language="makefile"/>
+<CollapseGithubCodeBlock title="Makefile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/Makefile" language="makefile"/>
 
 
 ```bash
@@ -488,7 +495,7 @@ Checking logs ....
 
 #### Adding the Reverse Proxy
 
-<CollapseGithubCodeBlock title="services/spark-reverse-proxy/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-reverse-proxy/Dockerfile" language="docker"/>
+<CollapseGithubCodeBlock title="services/spark-reverse-proxy/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/master/services/spark-reverse-proxy/Dockerfile" language="docker"/>
 
 
 #### Adding Spark History Server

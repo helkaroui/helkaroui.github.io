@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
     title: 'Sharek.dev',
-    tagline: 'Sharek\'s Geek Cookbook',
+    tagline: 'Made by developers for developers with ❤️',
     url: 'https://helkaroui.github.io',
     baseUrl: '/',
     onBrokenLinks: 'warn',
@@ -14,6 +14,14 @@ module.exports = {
     },
     themes: ['@docusaurus/theme-mermaid'],
     themeConfig: {
+        announcementBar: {
+            id: 'support_us',
+            content:
+              '⭐️ If you like Sharek.dev, give it a star on <a href="https://github.com/helkaroui/helkaroui.github.io">GitHub</a>',
+            backgroundColor: '#fafbfc',
+            textColor: '#091E42',
+            isCloseable: true,
+        },
         docs: {
             sidebar: {
                 autoCollapseCategories: true,
