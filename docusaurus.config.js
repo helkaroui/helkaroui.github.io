@@ -224,7 +224,8 @@ module.exports = {
                 blog: {
                     showReadingTime: true,
                     // Please change this to your repo.
-                    editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+                    editUrl: 'https://github.com/helkaroui/helkaroui.github.io/edit/develop/blog/',
+                    readingTime: ({content, frontMatter, defaultReadingTime}) => defaultReadingTime({content, options: {wordsPerMinute: 300}})
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
