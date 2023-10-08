@@ -9,6 +9,10 @@ module.exports = {
     favicon: 'img/favicon.ico',
     organizationName: 'helkaroui', // Usually your GitHub org/user name.
     projectName: 'helkaroui.github.io', // Usually your repo name.
+    markdown: {
+        mermaid: true,
+    },
+    themes: ['@docusaurus/theme-mermaid'],
     themeConfig: {
         docs: {
             sidebar: {

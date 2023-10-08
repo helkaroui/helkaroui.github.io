@@ -5,6 +5,13 @@ toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
+import Collapse from '@site/src/components/collapse';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {CollapseGithubCodeBlock} from '@site/src/components/github-codeblock';
+
+
+
 :::warning
 
 This article is still in review 🚧 by the co-authors.
@@ -17,58 +24,86 @@ In today's data-driven world, the ability to efficiently process and analyze lar
 
 In this context, we want to share our take aways from migrating old Spark Standalone clusters to kubernetes using Spark Submit.
 
+
 ## Project context
 The client's infrastructure is build on top of OpenStack, thus most of services are installed manually or using Ansible, on top of virtual machines. With these constraints, the big data team has build multiple Spark Standalone clusters for each of their environments.
 
-## Migration Goals & Constraints
+### Goals & Constraints
 
-**Constraints** 
+:::info
 
-The client is very demanding regarding security and authorization, thus the architects forbidden different teams from installing k8s operators.
+**Dynamic Scaling**
+Dynamic scaling refers to the ability to automatically adjust the number of Spark executors in response to workload demands. This feature allows applications to efficiently utilize cluster resources while maintaining optimal performance.
 
 
-**Goals** 
+<Collapse title="Learn more ...">
 
-The integration of Apache Spark with Kubernetes has opened up new horizons for running Spark workloads in a more efficient and flexible manner. Here's why this combination is so compelling:
+1. **Initial Deployment**:
+  When you submit a Spark application to run on Kubernetes, you define an initial number of executor pods based on your workload requirements and resource availability. These executor pods run alongside the Spark driver pod.
 
-**1. Resource Management and Isolation**
+2. **Monitoring Metrics**: 
+  Kubernetes, along with monitoring tools like Prometheus and Grafana, collects metrics about the Spark application's resource usage, such as CPU and memory consumption, as well as the progress of tasks within the application.
 
-Kubernetes provides fine-grained control over resources, enabling Spark applications to be isolated in containers with specific CPU and memory limits. This ensures that Spark jobs don't contend for resources with other applications running on the same cluster.
+3. **Resource Utilization Thresholds**:
+  You can configure resource utilization thresholds or policies that define when the cluster should scale up or down based on predefined criteria. These thresholds are often defined in terms of CPU and memory utilization.
 
-**2. Scalability**
+4. **Scaling Trigger**:
+  When the metrics collected breach the predefined thresholds, Kubernetes triggers the scaling process. If resource utilization is consistently high and exceeds the defined threshold, Kubernetes initiates the scaling up process to allocate more resources to the Spark application.
 
-Kubernetes makes it easy to scale Spark clusters up or down based on workload demands. This dynamic scaling ensures optimal resource utilization, reducing infrastructure costs.
+5. **Scaling Up**:
+  - Kubernetes increases the desired number of Spark executor pods by creating new pods.
+  - These new executor pods join the existing Spark driver pod and executor pods to distribute the workload.
+  - The Spark application can take advantage of the additional resources to process data faster.
 
-**3. Multi-Tenancy**
+6. **Continued Monitoring**:
+  Kubernetes and monitoring tools continue to monitor the Spark application's resource usage. If resource utilization drops below a certain threshold or the workload decreases, Kubernetes may trigger a scaling down process to reduce the number of executor pods.
 
-Kubernetes supports multi-tenancy, allowing different teams or users to share the same cluster securely. Each Spark application can run within its own namespace, ensuring data and resource isolation.
+7. **Scaling Down**:
+  - Kubernetes gracefully terminates the selected executor pods.
+  - Spark gracefully handles the termination of these executor pods, ensuring that in-progress tasks are not lost and that data is not corrupted.
+  - Once the executor pods have been safely terminated, the Spark application continues to run with the remaining resources.
 
-**4. Portability**
+8.  **Iterative Process**:
+Dynamic scaling is an iterative process that can occur multiple times during the execution of a Spark application. It allows the application to adapt to changing resource demands, ensuring efficient resource utilization without manual intervention.
 
-With Kubernetes, you can deploy Spark applications consistently across various environments, from on-premises data centers to public clouds. This portability simplifies deployment and minimizes compatibility issues.
+</Collapse>
 
-**5. Simplified Operations**
+:::
 
-Kubernetes abstracts away many of the complexities associated with managing Spark clusters. It automates tasks like scaling, monitoring, and recovery, reducing the operational overhead.
 
-**6. Efficient Resource Utilization**
-
-Kubernetes' bin-packing capabilities ensure efficient use of cluster resources. Spark pods are scheduled on worker nodes with available resources, minimizing wastage.
-
-## Getting Started with Spark on Kubernetes
-
-TBD
 
 ### Architecture
 
-TBD
 
-### How Spark Works on Kubernetes
+#### Spark-Submit Architecture
+Spark Submit can be used to submit a Spark Application directly to a Kubernetes cluster. The flow would be as follows:
 
-TBD
+![](./img/spark-submit-process.svg)
 
-### Spark-Submit vs Spark Operator
-`spark-submit` and the Spark Operator are two different approaches for running Apache Spark applications on Kubernetes. Each has its own advantages and use cases, and the choice between them depends on your specific requirements and infrastructure setup.
+1. The client, that lives outside or inside the kubernetes cluster, submit an application and asks the k8s API to create the driver
+2. k8s creates Spark driver running within a Kubernetes pod.
+3. The driver requests k8s to create executors which are also running within Kubernetes pods.
+4. k8s creates the executors 
+5. The driver is notified and connects to them.
+6. The driver executes application code on executors.
+
+When the application completes, the executor pods terminate and are cleaned up, but the driver pod persists logs and remains in “completed” state in the Kubernetes API until it’s eventually garbage collected or manually cleaned up.
+
+
+
+
+:::note
+
+Note that in the completed state, the driver pod does not use any computational or memory resources.
+
+:::
+
+
+:::info
+
+There is another approche to schedule spark application on kubernetes, which by using a `Spark Operator`. The operator should be installed into kubernetes cluster.
+
+Each has its own advantages and use cases, and the choice between them depends on your specific requirements and infrastructure setup.
 
 * Use spark-submit when:
   * You need maximum flexibility and control over Spark configurations.
@@ -81,92 +116,98 @@ TBD
   * You need dynamic scaling and resource management features.
   * You are using Kubernetes extensively in your infrastructure.
 
-
-### Dynamic Scaling
-
-Dynamic scaling refers to the ability to automatically adjust the number of Spark executors in response to workload demands. This feature allows applications to efficiently utilize cluster resources while maintaining optimal performance.
-
-1. **Initial Deployment**:
-   When you submit a Spark application to run on Kubernetes, you define an initial number of executor pods based on your workload requirements and resource availability. These executor pods run alongside the Spark driver pod.
-
-2. **Monitoring Metrics**: 
-   Kubernetes, along with monitoring tools like Prometheus and Grafana, collects metrics about the Spark application's resource usage, such as CPU and memory consumption, as well as the progress of tasks within the application.
-
-3. **Resource Utilization Thresholds**:
-   You can configure resource utilization thresholds or policies that define when the cluster should scale up or down based on predefined criteria. These thresholds are often defined in terms of CPU and memory utilization.
-
-4. **Scaling Trigger**:
-   When the metrics collected breach the predefined thresholds, Kubernetes triggers the scaling process. If resource utilization is consistently high and exceeds the defined threshold, Kubernetes initiates the scaling up process to allocate more resources to the Spark application.
-
-5. **Scaling Up**:
-   - Kubernetes increases the desired number of Spark executor pods by creating new pods.
-   - These new executor pods join the existing Spark driver pod and executor pods to distribute the workload.
-   - The Spark application can take advantage of the additional resources to process data faster.
-
-6. **Continued Monitoring**:
-   Kubernetes and monitoring tools continue to monitor the Spark application's resource usage. If resource utilization drops below a certain threshold or the workload decreases, Kubernetes may trigger a scaling down process to reduce the number of executor pods.
-
-7. **Scaling Down**:
-   - Kubernetes gracefully terminates the selected executor pods.
-   - Spark gracefully handles the termination of these executor pods, ensuring that in-progress tasks are not lost and that data is not corrupted.
-   - Once the executor pods have been safely terminated, the Spark application continues to run with the remaining resources.
-
-8.  **Iterative Process**:
-   Dynamic scaling is an iterative process that can occur multiple times during the execution of a Spark application. It allows the application to adapt to changing resource demands, ensuring efficient resource utilization without manual intervention.
+:::
 
 
-## Getting hands dirty
+#### Project Architecture
 
-TBD
+In this project, we will showcase two ways to schedule Spark applications on kubernetes:
+- Native Kubernetes solution: using kubernetes Job resource type to submit the application.
+- Scheduler: using Airflow to schedule application.
 
-### Proposed Architecture
+For these two solutions we propose the following architectures :
 
-**Using Kubernetes jobs**
+<Tabs>
+  <TabItem value="apple" label="Using Kubernetes jobs" default>
+  <div style={{padding: '20px', 'background-color': '#f6f8fa'}}>
+
+*What is a kubernetes Job ?*
+> A Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate. As pods successfully complete, the Job tracks the successful completions. 
+>
+> — kubernetes.io
+
+For more details about jobs, check the [kubernetes docs](https://kubernetes.io/docs/concepts/workloads/controllers/job/).
+
 ![](./img/spark-submit-on-k8s--using-jobs.svg)
 
 
-**Using a scheduler: Airflow**
+  </div>
+  </TabItem>
+  <TabItem value="orange" label="Using a scheduler: Airflow">
+    <div style={{padding: '20px', 'background-color': '#f6f8fa'}}>
+
+*What is a kubernetes Job ?*
+> Apache Airflow™ is an open-source platform for developing, scheduling, and monitoring batch-oriented workflows. Airflow’s extensible Python framework enables you to build workflows connecting with virtually any technology.
+> 
+> — airflow.apache.org
+
+For more details about Airflow, check the [officiel website](https://airflow.apache.org/).
+
 ![](./img/spark-submit-on-k8s--using-airflow.svg)
+
+
+  </div>
+  </TabItem>
+</Tabs>
+
+
+## Getting Started
+
+I recommand you to download the project source code from my Github Repo [helkaroui/spark-on-k8s](https://github.com/helkaroui/spark-on-k8s), and try to follow the following steps. It will help you to understand the different sections by stadying the code.
 
 ### Requirements
 In this project we will need to setup the following tools :
-- Docker
-- Kubernetes cluster / Minikube
-- kubectl
-- Skaffold
-- Kustomize
-- sbt (optional)
 
-[**Docker**](https://docs.docker.com/engine/install/)
+#### Container & Infrastructure
+- [**Docker**](https://docs.docker.com/engine/install/)
+
+<Collapse title="How to install Docker ?">
 
 Set up Docker's Apt repository:
 ```bash
-sudo apt-get update \
-&& sudo apt-get install ca-certificates curl gnupg \
-&& sudo install -m 0755 -d /etc/apt/keyrings \
-&& curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
-&& sudo chmod a+r /etc/apt/keyrings/docker.gpg \
-&& echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
-&& sudo apt-get update
+  sudo apt-get update
+  && sudo apt-get install ca-certificates curl gnupg
+  && sudo install -m 0755 -d /etc/apt/keyrings
+  && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  && sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  && echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu
+    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  && sudo apt-get update
 ```
 
 To install the latest version, run:
+
 ```bash
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 Now add your user to the Docker group:
+
 ```bash
 sudo usermod -aG docker $USER && newgrp docker
 ```
 
 Verify that the Docker Engine installation is successful by running the hello-world image.
+
 ```bash
 sudo docker run hello-world
 ```
 
-[**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.kube
+</Collapse>
+
+- [**Minikube**](https://minikube.sigs.k8s.io/docs/start/) is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.kube
+
+<Collapse title="How to install Minikube ?">
 
 To install the latest version, run:
 ```bash
@@ -189,7 +230,13 @@ And you can access the Dashboard with this command, the Dashboard will be launch
 minikube dashboard
 ```
 
-[**kubectl**](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/)
+</Collapse>
+
+
+- [**kubectl**](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) is a command line tool used to run commands against Kubernetes clusters.
+
+<Collapse title="How to install Kubectl ?">
+
 For kubectl, we can either install it, or create an alias to `minikube kubectl`.
 
 *Method 1*: Install kubectl
@@ -210,23 +257,13 @@ alias kubectl=minikube kubectl
 source ~/.bashrc
 ```
 
+</Collapse>
 
-[**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications.
-![](img/skaffold-architecture.png)
+#### Dev tools
 
-To install :
-```bash
-curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v2.0.4/skaffold-linux-amd64 \
-&& chmod +x skaffold \
-&& sudo mv skaffold /usr/local/bin
-```
+- [**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
 
-Verify setup:
-```bash
-skaffold version
-```
-
-[**Kustomize**](https://kustomize.io/) is a Kubernetes configuration transformation tool that allows you to customize untemplated YAML files, leaving the original files intact.
+<Collapse title="How to install Kustomize ?">
 
 To install :
 ```bash
@@ -240,8 +277,43 @@ Verify setup:
 kustomize version
 ```
 
-### Setting up a the project
-#### 1- The project structure
+</Collapse>
+
+- [**Skaffold**](https://skaffold.dev/) is a command line tool that facilitates continuous development for container based & Kubernetes applications.
+
+<Collapse title="How to install Skaffold ?">
+
+To install :
+```bash
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v2.0.4/skaffold-linux-amd64 \
+&& chmod +x skaffold \
+&& sudo mv skaffold /usr/local/bin
+```
+
+Verify setup:
+```bash
+skaffold version
+```
+
+</Collapse>
+
+:::note
+
+Skaffold handles the workflow for building, pushing and deploying your application. It is similar to `Docker-compose` for kubernetes.
+This enables you to focus on iterating on your application locally while Skaffold continuously deploys to your local or remote Kubernetes cluster, local Docker environment or Cloud Run project.
+
+<Collapse title="How it works in short ?">
+
+![](img/skaffold-architecture.png)
+
+</Collapse>
+
+Follow this [officiel tutorial](https://skaffold.dev/docs/quickstart/) if you’re using to Skaffold. It walks through running Skaffold on a small Kubernetes app built with Docker inside minikube and deployed with kubectl.
+
+:::
+
+
+### The project structure
 
 We will start by creating a project with a structure that emphasis the separation of rules, i.e. we seperate the code base, the service component and the environment specifics on which the application will run. This concept is also called `Environment-Agnostic Design` also known as `environment-agnostic architecture` or `platform-agnostic design`.
 
@@ -273,10 +345,9 @@ In that sperit, here is our project structure :
 - **Deployment :** this folder holds resources and variants of environment configurations - like `development`, `staging` and `production` - using overlays that modify a common base.
 
 
-
 ### Building docker images
 
-#### 1- Spark Base Image
+#### Spark Base Image
 
 We decided to create a custom spark docker image rather than using the provided docker image, in order to showcase the possibility of customizing Spark upon the project needs.
 
@@ -286,75 +357,19 @@ The easiest way is to mimic the Dockerfile located in Spark [Repository](https:/
 
 We reduce the dockerfile to it's minimum and we add a stage to build spark from source using maven.
 
-```Dockerfile
-FROM maven:3.9.4-eclipse-temurin-8-focal AS BUILD
+<CollapseGithubCodeBlock title="images/base-images/spark-base-image/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/base-images/spark-base-image/Dockerfile" language="docker"/>
 
-ENV SRC_DIR=/opt/source/
-ENV DIST_DIR=/opt/spark/
-
-ARG SPARK_VERSION
-
-ENV SPARK_VERSION=${SPARK_VERSION}
-
-RUN apt-get update \
-    && apt-get install -y unzip
-
-RUN mkdir -p ${SRC_DIR} \
-    && mkdir -p ${DIST_DIR} \
-    && cd ${SRC_DIR} \
-    && curl -skL -XGET https://github.com/apache/spark/archive/refs/tags/v${SPARK_VERSION}.zip -o ${SRC_DIR}/spark.zip \
-    && unzip -qq spark.zip \
-    && cd spark-${SPARK_VERSION} \
-    && mvn install -pl core,streaming,assembly -Pkubernetes -Phive -Phive-thriftserver -Dmaven.test.skip=true -DskipTests --no-transfer-progress \
-    && cp -r sbin bin conf assembly/target/scala-2.12/jars ${DIST_DIR} \
-    && mvn clean \
-    && rm -rf ${SRC_DIR}
-
-FROM eclipse-temurin:8-focal as RUNTIME
-
-ARG spark_uid=185
-
-RUN set -ex && \
-    apt-get update && \
-    ln -s /lib /lib64 && \
-    apt install -y bash tini && \
-    mkdir -p /opt/spark && \
-    mkdir -p /opt/spark/examples && \
-    mkdir -p /opt/spark/work-dir && \
-    touch /opt/spark/RELEASE && \
-    rm /bin/sh && \
-    ln -sv /bin/bash /bin/sh && \
-    echo "auth required pam_wheel.so use_uid" >> /etc/pam.d/su && \
-    chgrp root /etc/passwd && chmod ug+rw /etc/passwd && \
-    rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/*
-
-ENV SPARK_HOME="/opt/spark" \
-    HADOOP_CONF_DIR="${SPARK_HOME}/conf" \
-    PATH="${SPARK_HOME}/bin:${SPARK_HOME}/sbin/:/opt/:${PATH}"
-
-COPY --from=BUILD --chown=185:185 /opt/spark ${SPARK_HOME}
-COPY *.sh ${SPARK_HOME}/sbin/
-
-RUN chmod g+w ${SPARK_HOME}/work-dir \
-      && chmod a+x ${SPARK_HOME}/sbin/*.sh \
-      && chmod a+x ${SPARK_HOME}/bin/*.sh
-
-WORKDIR ${SPARK_HOME}/work-dir
-
-ENTRYPOINT [ "entrypoint.sh" ]
-
-# Specify the User that the actual main process will run as
-USER ${spark_uid}
-```
 
 :::note
 
-At this point, we can test everything by building the docker image `docker build .`
+At this point, we can test everything by building the docker image `docker build .` The build will take couple of minutes, since we are compiling the source code. 
+
+We can of course replace this section, and download the binaries from [https://spark.apache.org](https://spark.apache.org), to reduce the build time. But the aim here is to be able to easily customize Spark, add libraries and adapt it to our needs.
 
 :::
 
 
-#### 2- Spark App Example Image
+#### Spark App Example Image
 
 To showcase a fully working spark application, we create a basic Scala/Spark application with two scripts :
 - *Compute Pi* this script will compute an approximation to PI and log the result. The code is also included in [Spark-Examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) module.
@@ -384,91 +399,18 @@ We first start by creating an SBT project as follow :
 ```
 
 5- Adding a dependency in the `build.sbt` file :
-```sbt
-libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-sql" % "3.5.0" % Provided cross CrossVersion.for3Use2_13,
-      "org.apache.spark" %% "spark-streaming" % "3.5.0" % Provided cross CrossVersion.for3Use2_13
-)
-```
-
-:::note
-
-Because there is no Scala 3 version of spark-sql available, we use CrossVersion for3Use2_13 to tell sbt we want the Scala 2.13 version of this library
-
-:::
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/build.sbt" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/build.sbt" language="scala"/>
 
 
 6- Add `sbt-assembly` plugin under `project/plugins.sbt` :
-```scala
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.1")
-```
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/project/plugins.sbt" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/project/plugins.sbt" language="scala"/>
 
 7- Create the scala script `SparkPi` under package `dev.sharek.examples` :
-```scala
-package dev.sharek.examples
-
-import org.apache.spark.sql.SparkSession
-
-import scala.math.random
-
-class SparkPi(args: Array[String]) {
-
-  val spark = SparkSession
-    .builder
-    .appName("Spark Pi")
-    .getOrCreate()
-
-  SparkPiLogic(spark, args)
-
-  spark.stop()
-}
-
-
-class SparkPiLogic(spark: SparkSession, args: Array[String]) {
-
-  val slices = if (args.length > 0) args(0).toInt else 2
-  val numSecondsToSleep = if (args.length > 1) args(1).toInt else 10
-
-
-  val n = math.min(100000L * slices, Int.MaxValue).toInt // avoid overflow
-  val count = spark.sparkContext.parallelize(1 until n, slices).map { i =>
-    val x = random * 2 - 1
-    val y = random * 2 - 1
-    if (x * x + y * y <= 1) 1 else 0
-  }.reduce(_ + _)
-
-  println(s"Pi is roughly ${4.0 * count / (n - 1)}")
-
-
-  for (i <- 1 until numSecondsToSleep) {
-    println(s"Alive for $i out of $numSecondsToSleep seconds")
-    Thread.sleep(1000)
-  }
-
-}
-```
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/src/main/scala/dev/sharek/examples/SparkPi.scala" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/src/main/scala/dev/sharek/examples/SparkPi.scala" language="scala"/>
 
 
 8- Finaly, we add the Dockerfile that builds the sbt project into jar files:
-
-```docker
-FROM sbtscala/scala-sbt:eclipse-temurin-jammy-8u382-b05_1.9.6_3.3.1
-
-ENV SRC_DIR=/opt/source
-ENV APP_DIR=/opt/spark-app-example
-
-
-RUN mkdir -p $SRC_DIR \
-    && mkdir -p $APP_DIR
-
-COPY . $SRC_DIR
-
-RUN cd $SRC_DIR \
-    && sbt assembly \
-    && cp target/scala-3.3.1/spark-app-example.jar $APP_DIR/
-
-WORKDIR $APP_DIR
-```
+<CollapseGithubCodeBlock title="images/custom-images/spark-app-example/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/images/custom-images/spark-app-example/Dockerfile" language="docker"/>
 
 :::note
 
@@ -477,30 +419,28 @@ At this point, we can test everything by building the docker image `docker build
 :::
 
 
-#### Minimal working example
+### 1st approach: Kubernetes Job
 
+To be able to mimic a real big data architecture, we want to have a distribute storage layer for the spark application to store it's Dataframes. 
+We choosed S3, as it is widely used in big data projects.
 
-#### Building & Deploying Example
+#### S3 Service
 
+The docker file:
+<CollapseGithubCodeBlock title="services/s3/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/s3/Dockerfile" language="docker"/>
 
-### Kubernetes Components
-
-#### Spark Submit Image
 
 #### Spark Submit Service
 
-#### Using Pod Template
-
-#### Adding a configmap
-
-#### Ingress
-
-#### Spark History Server
-
-#### UI Proxy
+<CollapseGithubCodeBlock title="services/spark-app-example/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-app-example/Dockerfile" language="docker"/>
 
 
-### Deploying the Spark Pi Demo Application
+<CollapseGithubCodeBlock title="services/spark-app-example/entrypoint.sh" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-app-example/entrypoint.sh" language="bash"/>
+
+<CollapseGithubCodeBlock title="services/spark-app-example/job.yaml" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-app-example/job.yaml" language="yaml"/>
+
+
+#### Deploying the Spark Pi Demo Application
 
 starting Minikube:
 
@@ -512,47 +452,59 @@ minikube start
 kubectl get nodes
 ```
 
+<CollapseGithubCodeBlock title="Makefile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/Makefile" language="makefile"/>
 
 
+```bash
+make spark-submit
+```
+
+#### Checking the logs
+
+```bash
+kubectl get pods
+```
+
+```bash
+kubectl logs driver-ccccccc-
+```
+
+#### Accessing the Spark UI
+
+The UI associated with any application can be accessed locally using kubectl port-forward.
+
+```bash
+kubectl port-forward <driver-pod-name> 4040:4040
+```
+Then, the Spark driver UI can be accessed on [http://localhost:4040](http://localhost:4040).
+
+
+:::info
+
+Checking logs ....
+
+:::
+
+
+#### Adding the Reverse Proxy
+
+<CollapseGithubCodeBlock title="services/spark-reverse-proxy/Dockerfile" url="https://raw.githubusercontent.com/helkaroui/spark-on-k8s/1-project-structure/services/spark-reverse-proxy/Dockerfile" language="docker"/>
+
+
+#### Adding Spark History Server
+
+
+
+### 2nd approach: Airflow Scheduler
+
+#### Creating an Airflow Service
+
+#### Deploying the Spark Pi Demo Application
 
 #### Checking the logs
 
 TBD
 
-#### Accessing the Spark UI
-
-TBD
-
-#### Spark Job Execution History
-
-TBD
-
-#### Monitoring
-
-TBD
-
-
-### Continuous Development
-
-TBD 
-
-#### Hot reloading
-
-TBD
-
-
-
-## Pros and Cons of Spark Submit with K8s
-
-TBD
-
-**Pros of Spark with K8s:**
-* ...
-* ...
-
-**Cons of Spark with K8s:**
-* ...
-* ...
 
 ## Conclusion
 
