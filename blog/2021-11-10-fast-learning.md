@@ -66,6 +66,6 @@ Cheers
 
 ## Updates 
 **10/11/2021** - Here is what I've made on my first day of Fast-Learning strategy  
-- I started with Kafka and wrote quick notes that you can find [here](/big_data/kafka/quick_start)
-- I've got into Go language and I love it ! So I started a new section, check it [here](/go/quick_start)
+- I started with Kafka and wrote quick notes
+- I've got into Go language and I love it ! So I started a new section, check it [here](/developer/languages/go/quick_start)
 - I started reading the core concepts of Airflow, but got tired 🥱

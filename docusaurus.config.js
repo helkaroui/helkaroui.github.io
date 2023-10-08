@@ -168,15 +168,15 @@ module.exports = {
                     ]
                 },
                 {
+                    to: 'blog',
+                    label: 'Blog',
+                    position: 'right'
+                },
+                {
                     to: 'about',
                     label: 'About',
                     position: 'right'
                 },
-//                {
-//                    to: 'blog',
-//                    label: 'Blog',
-//                    position: 'right'
-//                },
                 {
                     href: 'https://github.com/helkaroui',
                     label: 'GitHub',
@@ -187,19 +187,19 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [
-                //{
-                //    title: 'Recent articles',
-                //    items: [
-                //        {
-                //            label: 'Getting started with Spark',
-                //            to: 'data_processing/overview',
-                //        },
-                //        {
-                //            label: 'Spark optimization techniques you should know about',
-                //            to: 'data_processing/spark/optimizations/overview',
-                //        },
-                //    ],
-                //},
+                {
+                    title: 'Recent articles',
+                    items: [
+                        {
+                            label: 'Spark on k8s: the complete guide',
+                            to: 'data_processing/spark/articles/spark-meets-kubernetes',
+                        },
+                        {
+                            label: 'Spark meets Go!',
+                            to: 'data_processing/spark/articles/spark-meets-go',
+                        },
+                    ],
+                },
                 {
                     title: 'More',
                     items: [
