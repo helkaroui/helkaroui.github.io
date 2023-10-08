@@ -2,11 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://helkaroui.github.io/blog</id>
     <title>Sharek.dev Blog</title>
-    <updated>2023-01-13T00:00:00.000Z</updated>
+    <updated>2023-10-08T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://helkaroui.github.io/blog"/>
     <subtitle>Sharek.dev Blog</subtitle>
     <icon>https://helkaroui.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Ideas Board: #1]]></title>
+        <id>https://helkaroui.github.io/blog/ideas-board</id>
+        <link href="https://helkaroui.github.io/blog/ideas-board"/>
+        <updated>2023-10-08T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In this series of blog posts, I'll list some ideas that came to my mind for future development.]]></summary>
+        <content type="html"><![CDATA[<p>In this series of blog posts, I'll list some ideas that came to my mind for future development.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="tech-radar">Tech Radar:<a href="#tech-radar" class="hash-link" aria-label="Direct link to Tech Radar:" title="Direct link to Tech Radar:">​</a></h2><p>Create a Tech Radar at techradar.sharek.dev and use the open source from Zalando <a href="https://github.com/zalando/tech-radar" target="_blank" rel="noopener noreferrer">Tech Radar</a></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="real-estate-radar">Real Estate Radar:<a href="#real-estate-radar" class="hash-link" aria-label="Direct link to Real Estate Radar:" title="Direct link to Real Estate Radar:">​</a></h2><p>Create a real state analyser and alert system for the tunisian real estate market.</p>]]></content>
+        <author>
+            <name>Hamza EL KAROUI</name>
+            <email>helkarou@gmail.com</email>
+            <uri>https://github.com/helkaroui</uri>
+        </author>
+        <category label="ideas" term="ideas"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[How to achieve a Proof Of Concept]]></title>
         <id>https://helkaroui.github.io/blog/how-to-crate-a-proof-of-concept</id>
