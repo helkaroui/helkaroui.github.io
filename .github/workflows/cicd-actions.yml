@@ -1,46 +1,46 @@
 name: CICD
 on:
   push:
-    branches:    
-      - 'develop'
+    branches:
+    - 'develop'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out develop branch
-        uses: actions/checkout@v3
-      - name: Build project
-        run: |
-          npm install
-          npm run build
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: build
-          retention-days: 1
+    - name: Check out develop branch
+      uses: actions/checkout@v3
+    - name: Build project
+      run: |
+        yarn install
+        yarn build
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: build
+        retention-days: 1
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Check out master branch
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Download dist artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-      - name: Add CNAME file if not present
-        run: echo "sharek.dev" > CNAME
-      - name: list all changes
-        run: |
-          cd ${{ github.workspace }}
-          git status
-      - name: git commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'Auto deploy CICD'
-          add: '*'
-          push: true
+    - name: Check out master branch
+      uses: actions/checkout@v3
+      with:
+        ref: master
+    - name: Download dist artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+    - name: Add CNAME file if not present
+      run: echo "sharek.dev" > CNAME
+    - name: list all changes
+      run: |
+        cd ${{ github.workspace }}
+        git status
+    - name: git commit changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: 'Auto deploy CICD'
+        add: '*'
+        push: true
