@@ -106,8 +106,18 @@ Engineering School : [SupCom](https://www.supcom.tn)
 
 ## Certificates
 
-<img width="150" src={require('../../static/img/certifcates/lightbend-scala-language-professional-level-2.1.png').default} />
-<img width="150" src={require('../../static/img/certifcates/lightbend-akka-cluster-fundamentals-level-2.png').default} />
+<a href="https://www.credly.com/badges/535e02f3-3d2e-40ad-b3f4-2806e81e22c4/public_url">
+  <img width="150" src={require('../../static/img/certifcates/lightbend-scala-language-professional-level-2.1.png').default} />
+</a>
+
+
+<a href="https://www.credly.com/badges/ccac1fc1-a614-430c-9598-6e28723ab6dd/public_url">
+  <img width="150" src={require('../../static/img/certifcates/lightbend-akka-cluster-fundamentals-level-2.png').default} />
+</a>
+
+<a href="https://www.credly.com/badges/f105781e-411f-46d2-a234-81b226663e9b/public_url">
+  <img width="150" src={require('../../static/img/certifcates/aws-certified-cloud-practitioner.png').default} />
+</a>
 
 
 ## Download CV
