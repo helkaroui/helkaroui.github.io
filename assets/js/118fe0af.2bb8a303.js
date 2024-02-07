@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[8448],{9904:e=>{e.exports=JSON.parse('{"label":"bigquery","permalink":"/blog/tags/bigquery","allTagsPath":"/blog/tags","count":1}')}}]);

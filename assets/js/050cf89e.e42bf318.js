@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[9732],{2712:s=>{s.exports=JSON.parse('{"label":"k8s","permalink":"/blog/tags/k-8-s","allTagsPath":"/blog/tags","count":1}')}}]);
