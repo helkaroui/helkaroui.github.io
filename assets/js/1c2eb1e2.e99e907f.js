@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[6026],{2970:e=>{e.exports=JSON.parse('{"label":"prefecture","permalink":"/blog/tags/prefecture","allTagsPath":"/blog/tags","count":1}')}}]);

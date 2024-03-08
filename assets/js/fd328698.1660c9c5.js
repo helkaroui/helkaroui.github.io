@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[7835],{5199:a=>{a.exports=JSON.parse('{"label":"airflow","permalink":"/blog/tags/airflow","allTagsPath":"/blog/tags","count":1}')}}]);

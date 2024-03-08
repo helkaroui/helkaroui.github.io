@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksharek_dev=self.webpackChunksharek_dev||[]).push([[3245],{4801:e=>{e.exports=JSON.parse('{"label":"ideas","permalink":"/blog/tags/ideas","allTagsPath":"/blog/tags","count":1}')}}]);
