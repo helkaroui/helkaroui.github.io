@@ -122,7 +122,6 @@ Engineering School : [SupCom](https://www.supcom.tn)
 
 ## Download CV
 To download my cv in :
-- English : [hamza-el-karoui-resume-en.pdf](/files/hamza-el-karoui-resume-en.pdf)
 - French :  [hamza-el-karoui-resume-fr.pdf](/files/hamza-el-karoui-resume-fr.pdf)
 
 

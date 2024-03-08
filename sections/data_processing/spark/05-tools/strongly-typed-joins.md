@@ -57,8 +57,6 @@ https://gitter.im/JetBrains/intellij-scala?at=5dca8885add5717a88f332f8
 How to create Macro support for Idea
 https://blog.jetbrains.com/scala/2015/10/14/intellij-api-to-build-scala-macros-support/
 
-
-
 Why not create a compiler plugin like scalapb
 https://github.com/scalapb/ScalaPB/tree/master/compiler-plugin/src/main/scala/scalapb
 
